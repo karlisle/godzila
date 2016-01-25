@@ -1,0 +1,298 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Simple Sectioned Essay Template
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing essay content.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article} % Default font size is 12pt, it can be changed here
+		\textheight = 19cm
+		\textwidth = 19cm
+		\topmargin = -1.5cm
+		\oddsidemargin = -1cm
+		\parindent = 5mm
+
+\usepackage{geometry} % Required to change the page size to A4
+\geometry{a4paper} % Set the page size to be A4 as opposed to the default US Letter
+
+\usepackage{graphicx} % Required for including pictures
+
+\usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+\usepackage{wrapfig} % Allows in-line images such as the example fish picture
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\linespread{1.2} % Line spacing
+
+%\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{savesym}
+\usepackage{amsmath}
+\savesymbol{iint}
+\usepackage{txfonts}
+\restoresymbol{TXF}{iint}
+
+
+\usepackage[x11names,table]{xcolor}
+\usepackage{pstricks}
+\usepackage[colorinlistoftodos, textwidth=2cm, shadow]{todonotes}
+%\usepackage{hyperref}
+
+
+
+\usepackage[colorlinks]{hyperref}
+\usepackage[nogroupskip,nopostdot]{glossaries}
+\setglossarystyle{altlist}
+\makenoidxglossaries
+
+
+
+
+%\usepackage[toc,style=altlistgroup,hyperfirst=false]{glossaries}
+
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=rosa1,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\urlstyle{same}
+
+\graphicspath{{./images/}} % Specifies the directory where pictures are stored
+
+\definecolor{miorange}{rgb}{0.11, 0.43, 0.21}
+\definecolor{rosa1}{RGB}{236, 46, 80}
+
+
+%----------------------------------------------------------------------------------------
+%	begin {Glosario}
+%----------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Termonos sueltos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newglossaryentry {ISC}{name={ISC},description={La Ingeniería en Sistemas Computacionales, se encarga del diseño de sistemas informáticos}}
+	
+\newglossaryentry {GUI}{name={GUI},description={La Interfaz gráfica de Usuario \texttt{GUI, por sus siglas en Ingles}, refiere a 
+					todo lo que tenga que ver con el aspecto gráfico de las aplicaciones de escritorio, son el medio con el que el
+                    usuario iteractua con el sistema, en la actualidad no se concibe la idea de un sistema sin la impelementación de
+                    las mismas como capa de cara al usuario final. }}
+	
+\newglossaryentry{fan}{name={fan},description={Un \textit{fan} es una persona que se ha regsitrado en el sistema, pero solo eso, 
+					no ha escalado privilegios a \textit{user}}}
+
+\newglossaryentry{items}{name={items},description={Un los \textit{items} se refieren a un \textit{item}}}
+
+\newglossaryentry{GPL}{name={GPL},description={La Licencia Pública General de \texttt{GNU} o más conocida por su nombre en inglés GNU
+					\texttt{General Public License} (o simplemente sus siglas del inglés \texttt{GNU GPL}) es la licencia más ampliamente
+                    usada1 en el mundo del software y garantiza a los usuarios finales (personas, organizaciones, compañías) la libertad 
+                    de usar, estudiar, compartir (copiar) y modificar el software.}}
+
+\newglossaryentry{front end}{name={front-end},description={Es la capa de diseño mas cercana al usuario, es por decirlo así de forma simple: 
+					la interfaz de usuario (\gls{GUI}.}}
+
+\newglossaryentry{back end}{name={back-end},description={Son todos los procesos o partes del sistema que no son visibles para el usuario,
+					y sin embargo son los que manejan la lógica del sistema}}
+	
+\newglossaryentry{metadata}{name={meta-data},description={El termino es redundante, pues se refiere a la información de la información. }}
+
+\newglossaryentry{UML}{name={UML},description={Lenguaje Unificado de Modelado, en Ingles \textit{Unified Modeling Languege}, de propósito
+					general}}
+	
+	
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Terminos relacionados a bases de datos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newglossaryentry {SDB}{name={SDB},description={Los System Data Base o mas específicamente \textit{\gls{SGBD}, por sus siglas en Ingles}, son aplicaciones 
+	que se encargan de recibir, almacenar y manipular la información.}}
+
+\newglossaryentry{SGBD}{name={SGBD},description={Se refiere aun \textit{\gls {SDB}}, solo que por sus siglas en español (\textit{Sistema Gestor de Base de Datos})}}
+
+\newglossaryentry{MySql}{name={MySql},description={Es un motor de base de datos relacional muy extendido y utilizado, propiedad de Oracle, misma que lo adquirió cuando 
+	compro Sun Microsystems, esta liberado bajo licencia \texttt{ \gls{GPL}}, lo que lo hace libre y gratuito}}
+
+\newglossaryentry{DDL}{name={DDL},description={El (\textit{Data Definition Language, DDL}, por sus siglas en ingles), es el lenguaje
+	del \gls{SGBD} con el cual se definen la estructura de las tablas y los datos en el \gls{SDB}}}
+	
+\newglossaryentry{db}{name={Base de Datos},description={Es en sentido estricto: información sobre los datos guardados en un medio, de forma que permita su accesibilidad 
+	y procesamiento \textit{\gls{metadata}}. Una biblioteca es, por ejemplo, una base de datos en toda definición.}}
+	
+\newglossaryentry{oop}{name={OO},description={Programación Orientada a Objetos, refiérase al Apéndice A para mas información \ref{OOP}}}	
+
+\newglossaryentry{objeto}{name={objeto},description={Parte de la \gls{oop}, la entidad básica de la que se compone, se caracteriza por tener los siguientes atributos:
+	información propia, un estado y un objetivo. }}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sistemas Operativos y terminos relacionados %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newglossaryentry{Debian}{name={Debian},description={Debian es un sistema operativo (\gls{S.O}.) libre, para su computadora. 
+	\url{https://www.debian.org/index.es.html}}}
+
+\newglossaryentry{Red Hat}{name={Red Hat},description={Debian es un sistema operativo (\gls{S.O}.) libre, para su computadora.
+	\url{http://www.redhat.com/es/global/mexico}}}
+
+\newglossaryentry{S.O}{name={S.O},description={El sistema operativo es el conjunto de programas básicos y utilidades que hacen que funcione su computadora.}}
+
+\newglossaryentry{Linux}{name={GNU/Linux}, description={GNU/Linux es uno de los términos empleados para referirse a la combinación del núcleo o kernel libre similar a 
+	\gls{Unix} denominado Linux con el sistema \gls{GNU}. \url{http://es.wikipedia.org/?title=GNU/Linux}}}
+
+\newglossaryentry{Unix}{name={UNIX}, description={  Unix (registrado oficialmente como UNIX) es un sistema operativo portable, multitarea y multiusuario; desarrollado, 
+	en principio, en 1969, por un grupo de empleados de los laboratorios Bell de AT\&T, entre los que figuran Ken Thompson, Dennis Ritchie y Douglas McIlroy.
+	\url{http://www.unix.org/}} }
+	
+\newglossaryentry{GNU}{name={GNU},description={El Proyecto GNU se inició en 1984 para desarrollar el sistema GNU. El nombre «GNU» (que significa «ñu» en inglés) es un acrónimo
+	 recursivo de «¡GNU No es Unix!». }}
+
+\newglossaryentry{archlinux}{name={Archlinux},description={Distribición \gls{Linux} que se basa en solo instalar  solo el núcleo del \gls{S.O} y algunas utilidades básicas, 
+	y el resto del sistema se construye a gusto del usuario.}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Alglisismos usados %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newglossaryentry{audioteca}{name={Audioteca},description={Es un repositorio de piezas musicales, almacenadas y registradas con la información pertinente disponibles para
+	quien solicite el acceso ya sea gratuito o con alguna cuota}}
+
+\newglossaryentry{user}{name={user},description={Del ingles \textit{user}, significa usuario, no obstante en entorno de este documento se refiere aun \textit{fan}, 
+	con la capacidad de hacer el registro de nuevos temas musicales }}
+
+\newglossaryentry{pk}{name={Llave Primaria},description={Es el identificador principal de una tabla de una \gls{db}}}
+
+
+\newglossaryentry{song}{name={song},description={Del Ingles, canción, tema en Español, aunque en el presente documento se refiere a la tabla \texttt{song}, 
+	e \texttt{ \gls{items}} a lo que seria una canción por definición. }}
+	
+\newglossaryentry{playlist}{name={playlist},description={Del Ingles, lista de reproducción es Español}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newglossaryentry{}{name={},description={}}
+
+%----------------------------------------------------------------------------------------
+%	En {Glosario}
+%----------------------------------------------------------------------------------------
+
+
+
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+
+\textsc{\LARGE Instituto tecnológico de San Juan del Río}\\[1.5cm] % Name of your university/college
+
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Amplificación interactiva de contenido por medio de detección de la dirección de la mirada}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+\begin{minipage}{0.8\textwidth}
+\begin{flushleft} \large
+\emph{Autor:}
+J.Carlos \textsc{Ávila Reséndiz}\\ % Your name
+
+\end{flushleft}
+\end{minipage}
+
+\vspace{3cm}
+\textsc{CICATA}\\[1.5cm] % Name of your university/college
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%\includegraphics[scale=0.1]{itsjr.jpg} % Include a department/university logo - this will require the graphicx package
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\tableofcontents % Include a table of contents
+
+\newpage % Begins the essay on a new page instead of on the same page as the table of contents 
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+
+	
+	
+%----------------------------------------------------------------------------------------
+%	BEGIN GLOSARIO
+%----------------------------------------------------------------------------------------			
+\newpage
+
+
+\printnoidxglossaries
+
+%----------------------------------------------------------------------------------------
+%	END GLOSARIO
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
+
+
+%bibitem{David} 
+%David E.Brumbaugh
+%[\textit{Object-Oriented Developement with C++}]. 
+%Edt.Wile, 1994.
+
+%\bibitem{Philippe} 
+%Kruchtens
+%[\textit{Architectual Blueprints – the “4+1” View Model of Software Architecture}]. 
+%http://www.cs.ubc.ca/~gregor/teaching/papers/4+1view-architecture.pdf
+
+
+
+
+
+
+%\bibitem[Figueredo and Wolf, 2009]{Figueredo:2009dg}
+%Figueredo, A.~J. and Wolf, P. S.~A. (2009).
+%\newblock Assortative pairing and life history strategy - a cross-cultural
+% study.
+
+ 
+\end{thebibliography}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
+
+
+
+
+
+
+
+
+

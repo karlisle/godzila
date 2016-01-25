@@ -1,0 +1,19 @@
+\BOOKMARK [1][-]{section.1}{Visi\363n artificial }{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Espectros de luz}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Seguimiento ocular }{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Tipos de seguimiento}{section.2}% 4
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Mediante m\351todos invasivo}{subsection.2.1}% 5
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Mediante m\351todos no invasivo}{subsection.2.1}% 6
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Mediante potenciales el\351ctricos}{subsection.2.1}% 7
+\BOOKMARK [3][-]{subsubsection.2.1.4}{Tecnolog\355as y t\351cnicas}{subsection.2.1}% 8
+\BOOKMARK [1][-]{section.3}{An\341lisis de requerimientos}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{Funcionales}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{No funcionales}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Dise\361o}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{M\363dulos del sistema}{section.4}% 13
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Main Window}{subsection.4.1}% 14
+\BOOKMARK [3][-]{subsubsection.4.1.2}{New Hough}{subsection.4.1}% 15
+\BOOKMARK [3][-]{subsubsection.4.1.3}{Eye-Gaze}{subsection.4.1}% 16
+\BOOKMARK [3][-]{subsubsection.4.1.4}{Trainer}{subsection.4.1}% 17
+\BOOKMARK [3][-]{subsubsection.4.1.5}{Addaptative Canny}{subsection.4.1}% 18
+\BOOKMARK [2][-]{subsection.4.2}{Conclusi\363n}{section.4}% 19

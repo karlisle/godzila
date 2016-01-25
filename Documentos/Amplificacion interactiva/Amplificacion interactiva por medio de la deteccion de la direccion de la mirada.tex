@@ -1,0 +1,442 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Simple Sectioned Essay Template
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing essay content.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article} % Default font size is 12pt, it can be changed here
+		\textheight = 26cm
+		\textwidth = 18cm
+		\topmargin = -1cm
+		\oddsidemargin = -1cm
+		\parindent = 5mm
+
+\usepackage{geometry} % Required to change the page size to A4
+\geometry{a4paper} % Set the page size to be A4 as opposed to the default US Letter
+
+\usepackage{graphicx} % Required for including pictures
+
+\usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+\usepackage{wrapfig} % Allows in-line images such as the example fish picture
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\linespread{1.2} % Line spacing
+
+%\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{savesym}
+\usepackage{amsmath}
+\savesymbol{iint}
+\usepackage{txfonts}
+\restoresymbol{TXF}{iint}
+
+
+\usepackage[x11names,table]{xcolor}
+\usepackage{pstricks}
+\usepackage[colorinlistoftodos, textwidth=2cm, shadow]{todonotes}
+%\usepackage{hyperref}
+
+
+
+\usepackage[colorlinks]{hyperref}
+\usepackage[nogroupskip,nopostdot]{glossaries}
+\setglossarystyle{altlist}
+\makenoidxglossaries
+
+
+
+
+%\usepackage[toc,style=altlistgroup,hyperfirst=false]{glossaries}
+
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=rosa1,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\urlstyle{same}
+
+\graphicspath{{./images/}} % Specifies the directory where pictures are stored
+
+\definecolor{miorange}{rgb}{0.11, 0.43, 0.21}
+\definecolor{rosa1}{RGB}{236, 46, 80}
+
+
+%----------------------------------------------------------------------------------------
+%	begin {Glosario}
+%----------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Terminos sueltos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newglossaryentry {ISC}{name={ISC},description={La Ingeniería en Sistemas Computacionales, se encarga del diseño de sistemas informáticos}}
+\newglossaryentry{Internet}{name={Internet},description={\textit{\gls{www}} \'o red mundial de computadoras.}}
+\newglossaryentry{intranet}{name={Intranet},description={Red interna de una organizaci\'on.}}
+\newglossaryentry{www}{name={WWW},description={World Wide Web}}
+\newglossaryentry{tec}{name={ITSJR},description={Instituto Tecnológico de San Juan del Río}}
+\newglossaryentry{SII}{name={SII},description={Sistema Integral de Información}}
+\newglossaryentry{App}{name={App},description={Aplicaci\'on m\'ovil}}
+\newglossaryentry{irc}{name={IRC},description={Internet Room Chat, populares en los primero a\~nos de la \gls{www}, anónimas y temáticas son el ancestro de la mensajería
+											   actual }}
+\newglossaryentry{WServer}{name={LAMP/WAMP},description={Es el acrónimo para referirse a un conjunto de software, utilizado para ejecutar sitios web dinámicos o servicios, 
+														el el caso de WAMP lo que cambia es el \gls{os}, que viene a ser Windows.}}
+\newglossaryentry{url}{name={URL},description={Localizador de recursos uniforme o URL —siglas en inglés de uniform resource locator}}
+\newglossaryentry{wifi}{name={WiFi},description={Su nombre proviene de la marca comercial \textsl{Wi-Fi} es un mecanismo de conexión de dispositivos electrónicos de forma
+												inalámbrica}}
+\newglossaryentry{oop}{name={OOP},description={Programación Orientada a Objetos, refiérase al Apéndice A para mas información}}										
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Terminos relacionados a bases de datos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sistemas Operativos y terminos relacionados %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newglossaryentry{os}{name={SO},description={Es el sistema o conjunto de aplicaciones que permiten que una computadora lleven a cabo sus funciones.}}
+\newglossaryentry{android}{name={Android},description={\gls{os} creado por google para dispositivos móviles, actualmente con la cuota de mercado mas alta.}}
+\newglossaryentry{ios}{name={iOS},description={\gls{os} Creado por \texttt{Apple}, para los dispositivos m\'oviles de la misma marca.}}
+\newglossaryentry{Linux}{name={GNU/Linux}, description={GNU/Linux es uno de los términos empleados para referirse a la combinación del núcleo o kernel libre similar a 
+	\gls{Unix} denominado Linux con el sistema \gls{GNU}. \url{http://es.wikipedia.org/?title=GNU/Linux}}}
+\newglossaryentry{Unix}{name={UNIX}, description={  Unix (registrado oficialmente como UNIX) es un sistema operativo portable, multitarea y multiusuario; desarrollado, 
+	en principio, en 1969, por un grupo de empleados de los laboratorios Bell de AT\&T, entre los que figuran Ken Thompson, Dennis Ritchie y Douglas McIlroy.
+	\url{http://www.unix.org/}} }
+	
+\newglossaryentry{GNU}{name={GNU},description={El Proyecto GNU se inició en 1984 para desarrollar el sistema GNU. El nombre «GNU» (que significa «ñu» en inglés) es un acrónimo
+	 recursivo de «¡GNU No es Unix!». }}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Alglisismos usados %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newglossaryentry{}{name={},description={}}
+
+%----------------------------------------------------------------------------------------
+%	En {Glosario}
+%----------------------------------------------------------------------------------------
+
+
+
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Instituto Tecnológico de San Juan del Río}\\[1.5cm] % Name of your university/college
+\textsc{\Large S.P.R.E.S.A.C}\\[0.5cm] % Major heading such as course name
+%\textsc{\large Minor Heading}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Sistema para el registro de entradas y salidas de areas criticas}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Autor:}\\
+J. Carlos \textsc{\'Avila Resendiz} % Your name
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+Dr. Joaquin  \textsc{Salas Rodriguez} % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[1.5cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+
+\includegraphics{./imagenes/itsjr_s.jpg}\\ % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------j
+
+\pagenumbering{roman} 
+\tableofcontents % Include a table of contents
+
+\newpage % Begins the essay on a new page instead of on the same page as the table of contents 
+%\appendix
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+\pagenumbering{arabic}	
+\setcounter{page}{1}
+	
+	\begin{minipage}{0.5\textwidth}
+		\begin{flushleft} \large
+		%\emph{•} \\
+		\scriptsize	\textsl{\large “El auténtico genio consiste en la capacidad para evaluar información incierta, aleatoria y contradictoria.”}\\
+		\scriptsize \textbf{Winston Churchill, estadista.}
+		\end{flushleft}
+	\end{minipage}\\[4cm]
+			
+		 
+\newpage		 
+     
+
+\section*{Introducción}
+
+	El presente documento esta enfocado únicamente en los resultados del estudio del código existente del proyecto que da nombre 
+    a este documento, \texttt{Amplificación interactiva de contenido por medio de detección de la dirección de la mirada}.
+    
+    Dado que en el trabajo previo no se incluyo documentación alguna de sobre la estructura del proyecto y/o de análisis de los requerimientos
+    del sistema, es por ello que antes de seguir con el proyecto se hace necesario el documentar el trabajo existente.
+
+\section{Visión artificial \label{vision_artificial}}
+	La visión artificial o visión por computadora es la ciencia y la tecnología que permiten a las máquinas ver o extraer información de las 
+    imágenes digitales y resolver alguna tarea o entender la escena que están visionando.
+    este conjunto de técnicas nos permiten diseñar interacciones, de modo que el usuario utiliza su movimiento o manipulación de objetos para 
+    interactuar con la aplicación.
+    
+    \subsection{Espectros de luz}
+    	La 
+	
+\section{Seguimiento ocular \label{eyeGaze}}
+	El seguimiento de ojos (traducido del inglés eye tracking) es el proceso de evaluar, bien el punto donde se fija la mirada (donde 
+    estamos mirando), o el movimiento del ojo en relación con la cabeza. Este proceso es utilizado en la investigación en los sistemas
+    visuales, en psicología, en lingüística cognitiva y en diseño de productos.
+   	\footnote{\href{https://es.wikipedia.org/wiki/Seguimiento_de_ojos}{Seguimiento ocular: Wikipedia}}
+    
+    \subsection{Tipos de seguimiento}
+    	\subsubsection{Mediante métodos invasivo}
+        	Utilizando algo adjunto al ojo como una lente de contacto especial con un espejo incorporado o un sensor de campo magnético.
+            El movimiento de la unión se mide con el supuesto que no se deslice de manera significativa cuando el ojo gire. Las mediciones
+            realizadas con lentes de contacto han aportado grabaciones extremadamente detalladas de los movimientos oculares. Las bobinas
+            magnéticas es el método que utilizan para realizar estudios sobre la dinámica y la fisiología subyacente al movimiento del ojo.
+      	
+        \subsubsection{Mediante métodos no invasivo}
+        	El segundo tipo de seguimiento sería sin necesidad que haya contacto. A través de la luz, por lo general luz infrarroja, se
+            refleja en los ojos y se capta mediante una cámara de vídeo o algún otro sensor óptico. La información recogida se analiza para
+            extraer la rotación de los ojos y los cambios en los reflejos.
+            
+            Los métodos ópticos, especialmente los basados en la grabación de vídeo son ampliamente utilizados para el seguimiento de la
+            mirada y están bien considerados porque no son invasivos y el coste es bajo.
+
+		\subsubsection{Mediante potenciales eléctricos}
+        	Finalmente, el tercer tipo utiliza el potencial eléctrico medido con electrodos colocados alrededor de los ojos para detectar el
+            movimiento. Los ojos son el origen de un constante campo de potencial eléctrico que también se puede detectar en total oscuridad
+            aunque estos estén cerrados. Puede estar modelado para generar un dipolo con el polo positivo en la córnea y el polo negativo en
+            la retina.
+            La señal eléctrica que se puede derivar al uso de dos pares de electrodos de contacto colocados en la piel alrededor del ojo se
+            llama electrooculograma \footnote{\href{https://es.wikipedia.org/wiki/Electrooculograma}{Electrooculograma}} (EOG). 
+            Si los ojos se mueven de la posición del centro hacia la periferia, la retina se acerca a uno de los electrodos, mientras que la
+            córnea se acerca al opuesto.
+            
+            Este cambio en la orientación de los dipolos cambia consecuentemente los resultados del campo potencial eléctrico la señal
+            \texttt{(EOG)} medida.
+            
+        \subsubsection{Tecnologías y técnicas}
+        	La extensa mayoría de diseños actuales son seguidores de ojos basados en vídeos. Una cámara enfoca uno o los dos ojos y graba sus
+            movimientos mientras el sujeto mira una serie de estímulos. Los seguidores de ojos más modernos usan el contraste para localizar
+            el centro de la pupila y crear un reflejo de la córnea a través de luz infrarroja e infrarroja cercana no colimada.
+            
+            El vector entre estas dos características puede usarse para computar la intersección de la mirada con una superficie después de
+            una simple calibración individual. Se usan dos tipos generales de técnicas de seguimiento de ojos: pupila brillante y pupila
+            oscura. 
+            La técnica de la pupila brillante genera un mejor contraste iris/pupila debido a un seguimiento de ojos más correcto en relación 
+            a la pigmentación del iris y reduce significativamente les interferencias producidas por las pestañas y otras características
+            ocultas.
+            
+             Esto además permite un seguimiento en condiciones que van desde la total oscuridad hasta una claridad alta. Estas técnicas no 
+             son muy efectivas para hacer seguimientos en exteriores ya que se producen interferencias en su monitorización.
+             
+             Las configuraciones de los seguidores de ojos varían mucho; algunos se montan en la cabeza, otros requieren la cabeza solo para
+             ser estables (por ejemplo con un apoya-mentón), y algunos siguen los movimientos de la cabeza de forma remota y automática
+             durante el movimiento. La mayoría usan una frecuencia de muestreo de al menos 30 Hz. Aunque 50/60 Hz es lo más común, actualmente
+             muchos seguimientos de ojos basados en vídeo funcionan a 240, 350 o incluso 1000/1250 Hz, frecuencia que se necesita para captar
+             en detalle los rápidos movimientos durante la lectura o durante los estudios de neurología.
+             
+             El movimiento de los ojos normalmente se divide en fijaciones y salidas, cuando la mirada se detiene en cierta posición y cuando
+             se mueve hacia otra posición respectivamente. Las series resultantes de las fijaciones y las salidas se llama \texttt{scanpath}.
+             La mayoría de la información de los ojos se hace disponible durante la fijación, pero no durante la salida.
+             
+              Los uno o dos grados centrales \textit{(la fóvea)} aporta la mayor parte de información; los inputs de las excentricidades más
+              extensas (la periferia) dan menos información. Por lo tanto, la localización de las fijaciones a lo largo del scanpath muestran
+              que puntos de información de los estímulos son procesados durante una sesión de seguimiento de ojos. De media, las fijaciones 
+              duran alrededor de 200ms durante la lectura de textos lingüísticos y 350ms durante la visión de una escena. Preparar la 
+              salida hacia un nuevo objetivo lleva alrededor de 200ms.
+              
+\section{Análisis de requerimientos}
+	\subsection{Funcionales}
+    	El sistema debe ser capas de realizar todas y cada una de las siguientes acciones:
+        \begin{itemize}
+        	\item Detectar o reconocer los ojos.
+            \item Determinar con alto nivel de exactitud la dirección de la mirada.
+			\item Realizar el seguimiento de la dirección de la mirada.
+            \item Efectuar la amplificación del área de la pantalla en la cual se esta enfocando la mirada.
+            \item Tener una interfaz de configuración, que contemple lo siguiente:
+            	\begin{enumerate}
+                	\item Calibración inicial.
+					\item Entrenamiento del usuario.
+                    \item Configuraciones personalizadas.
+				\end{enumerate}
+            \item En su version inicial debe correr en computadoras con sistema operativo Windows 
+            \footnote{\scriptsize Pese a que ese es el requerimiento inicial, se busca que sea multi-plataforma y en especial enfocado a
+            dispositivos móviles}.
+		\end{itemize}
+       
+       Cumplidos estos requisitos definidos con anterioridad se considera que el prototipo funcional para maquinas con \texttt{SO} Windows esta
+       completo.
+       
+	\subsection{No funcionales}
+    	
+    	\begin{itemize}
+        	\item Debe ejecutarse en maquinas con características básicas \footnote{\scriptsize Consideramos características básicas un
+            procesador con al menos dos núcleos y 1Gb de memoria RAM}.
+			\item Debe trabajar en imágenes de baja resolución.
+            \item Debe ejecutarse en tiempo real.
+            \item Debe ser lo suficientemente fluido \textit{optimizado} al realizar el seguimiento.
+		\end{itemize}
+        
+	
+\section{Diseño}
+	Los componentes que se describirán a continuación son única y expresamente los que ya existen en el proyecto existente y sobre el cual se 
+    se esta trabajando, y que la finalidad del mismo es tener un documento que describa de la manera mas certera posible el funcionamiento 
+    tanto individual como en conjunto.
+    
+    \subsection{Módulos del sistema}
+    	Por razones que escapan de mi conocimiento, no hay documentación de ningún tipo ya sea técnica, de usuario o de análisis de factibilidad
+        del proyecto, las siguientes secciones son de cierta forma meras interpretaciones en base al código existente del proyecto existente, por
+        ahora solo con el único fin de tener una perspectiva clara de lo que ya existe y poder ver que partes de ello se pueden reutilizar en un
+        futuro, ya sea parte del código o módulos completos.
+        
+        \subsubsection{Main Window}
+        
+        \subsubsection{New Hough}
+        	Módulos de la clase: \vspace{1cm}
+            	\begin{itemize}
+                	\item NewHouh
+                    \item circle\_hough
+                    \item circle\_houghpeaks
+                    \item circle\_points
+                    \item getLUT
+                    \item getEllipseLUT
+                    \item ellipse\_hough
+                    \item ellipse\_houghpeaks
+                    \item intersection
+                    
+				\end{itemize}
+
+        \subsubsection{Eye-Gaze}
+        	Módulos de la clase: 
+        	
+            \begin{itemize}
+				\item 
+			\end{itemize}
+           
+            
+
+        \subsubsection{Trainer}
+        Su función principal es de entrenar tanto al algoritmo de reconocimiento en cascada de \texttt{OpenCV} como al usuario, en etapa de
+        desarrollo se usa para el entrenamiento del algoritmo con la finalidad de que aprenda a discriminar todo aquello que parece ser \'ojos\' de
+        los reales \footnote{\scriptsize \textit{Considero que lo ideal es separar estas dos características, por un lado un modulo que se encarge 
+        de calibrar el sistema y otro que entrene al usuario en el uso de la aplicación.s }}.
+        
+        
+        
+        \subsubsection{Addaptative Canny}
+	
+\subsection{Conclusión}
+  
+  	
+%----------------------------------------------------------------------------------------
+%	BEGIN GLOSARIO
+%----------------------------------------------------------------------------------------			
+\newpage
+
+
+\printnoidxglossaries
+\pagenumbering{roman}
+%----------------------------------------------------------------------------------------
+%	END GLOSARIO
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+%---------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
+
+
+
+
+\bibitem{Luckham} 
+David Luckham
+[\textit{The Power of Events - An Introduction to Complex Event Processing in Distributed Enterprise Systems}]. 
+Addison-Wesley, ISBN 0-201-72789-7.
+
+
+\bibitem{Tello} 
+Adolfo Lozano Tello
+[\textit{Iniciación a la programación utilizando lenguajes visuales orientados a eventos.}] [ISBN978-84-7897-714-7]
+Ed.Bellisco Ediciones Técnicas y Científicas, ISBN 84-95279-49-5. ISBN 978-84-95279-49-1.
+
+
+%\bibitem{} 
+%Ricardo Barona Vázquez
+%[\textit{Asterisk©, telefonía IP en software libre}].
+%\href{Asterisk}{ http://www.enterate.unam.mx/artic/2008/abril/art3.html}
+
+\end{thebibliography}
+
+
+%----------------------------------------------------------------------------------------
+ 
+\end{document}
+
