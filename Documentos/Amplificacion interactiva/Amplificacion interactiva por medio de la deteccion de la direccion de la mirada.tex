@@ -355,9 +355,47 @@ Dr. Joaquin  \textsc{Salas Rodriguez} % Supervisor's Name
         futuro, ya sea parte del código o módulos completos.
         
         \subsubsection{Main Window}
-        
+        	Componentes de la clase:
+        	\begin{itemize}
+        		\item detect
+        		\item predict
+        		\item train
+        		\item readSettings
+        		\item preview
+        		\item drawPose
+        	\end{itemize}
+		Es con esta clase con la que que se inicia el ciclo de ejecución del sistema, se encarga principalmente de detectar en primera instancia desde la
+		disponibilidad de la cámara web o dispositivo que servirá como la fuente encargada de proporcionar las imágenes que se procesaran.
+		\begin{description}
+			\item[detect:] 
+				\begin{itemize}
+					\item Inicializar variables
+					\item Opcionalmente se puede guardar una copia del stream proporcionado por el dispositivo de captura.
+					\item Se cargan dos componentes de una librería externa encargada de detectar rasgos faciales y la posición de la cabeza.
+						\begin{enumerate}
+							\item \textit{DetectModel-v1.5.bin }
+							\item \textit{TrackingModel-v1.10.bin }
+						\end{enumerate}
+						Si no retorna el descriptor de alineación se notifica el evento.
+					\item Cargar los modelos en cascada para la detección de rostros.
+						\begin{enumerate}
+							\item \textit{haarcascade\_frontalface\_alt2.xml}
+						\end{enumerate}
+						Si no se encuentra se notifica.
+					\item Se crean tres ventanas:
+						\begin{enumerate}
+							\item \textbf{Gaze:} muestra toda la cara, con dos puntos que indican la mirada en el centro del iris.
+							\item \textbf{Lefteye:} una pequeño ventana que enmarca el ojo izquierdo.
+							\item \textbf{Righteye:}  una pequeño ventana que enmarca el ojo derecho.
+							\item Las mismas solo desaparecen hasta que el usuario presiona la tecla \textit{'Esc'}.
+						\end{enumerate}
+				\end{itemize}
+		\end{description}
+		
+		\subsubsection{Descripción detallada de los métodos.}
+		        
         \subsubsection{New Hough}
-        	Módulos de la clase: \vspace{1cm}
+        	Componentes de la clase: \vspace{1cm}
             	\begin{itemize}
                 	\item NewHouh
                     \item circle\_hough
@@ -371,24 +409,48 @@ Dr. Joaquin  \textsc{Salas Rodriguez} % Supervisor's Name
                     
 				\end{itemize}
 
-        \subsubsection{Eye-Gaze}
-        	Módulos de la clase: 
+        \subsubsection{eyGaze}
+        	Componentes de la clase: 
         	
             \begin{itemize}
-				\item 
+				\item ComputeIrisCenter
+				\item computeHeadPosition
+				\item proyectionPlane
+				\item computeIrisCenterEllipse
+				\item getEquializedeye
+				\item getEyeEdges
+				\item getIrisRange
+				\item getHoughAccumulator
 			\end{itemize}
            
             
 
         \subsubsection{Trainer}
-        Su función principal es de entrenar tanto al algoritmo de reconocimiento en cascada de \texttt{OpenCV} como al usuario, en etapa de
-        desarrollo se usa para el entrenamiento del algoritmo con la finalidad de que aprenda a discriminar todo aquello que parece ser \'ojos\' de
-        los reales \footnote{\scriptsize \textit{Considero que lo ideal es separar estas dos características, por un lado un modulo que se encarge 
-        de calibrar el sistema y otro que entrene al usuario en el uso de la aplicación.s }}.
-        
+        %Su función principal es de entrenar tanto al algoritmo de reconocimiento en cascada de \texttt{OpenCV} como al usuario, en etapa de
+        %desarrollo se usa para el entrenamiento del algoritmo con la finalidad de que aprenda a discriminar todo aquello que parece ser \'ojos\' de
+        %los reales \footnote{\scriptsize \textit{Considero que lo ideal es separar estas dos características, por un lado un modulo que se encarge 
+        %de calibrar el sistema y otro que entrene al usuario en el uso de la aplicación.s }}.
+        Componentes de la clase:
+        \begin{itemize}
+        	\item addTrainer
+        	\item trainSVModels
+        	\item saveSVModels
+        	\item loadSVModels
+        	\item trainRegModels
+        	\item saveRegModels
+        	\item loadRegModels
+        	\item predictPosition
+        \end{itemize}
         
         
         \subsubsection{Addaptative Canny}
+        Componentes de la clase:
+        \begin{itemize}
+        	\item adaptativeCanny
+        	\item smoothGradient
+        	\item selectThresholds
+        \end{itemize}
+   
 	
 \subsection{Conclusión}
   
