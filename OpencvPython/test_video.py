@@ -158,9 +158,29 @@ class Captura:
 				pass
 			pass
 		pass
+
+	def strokeEdges(self, src, dst, blurKsize = 7, edgeKsize = 5):
+
+		if blurKsize > 3:
+			blurredSrc = cv.medianBlur(src, blurKsize)
+			graySrc = cv.cvtColor(blurredSrc, cv.COLOR_BGR2GRAY)
+			pass
+		else:
+			graySrc = cv.cvtColor(src, cv.COLOR_BGR2GRAY)
+			pass
+		cv.Laplacian(graySrc, cv.cv.CV_8U, graySrc, ksize = edgeKsize)
+		normalizedInversealpha = (1.0 / 255) * (255 - graySrc)
+		chanels = cv.split(src)
+		for chanel in chanels:
+			chanel1[:] = chanel * normalizedInversealpha
+			pass
+		cv.merge(chanels, dst)
+
+		pass
 	pass
 
 app = Captura()
+app.imagen()
 #app.figuras()
 #app.video()
-app.face()
+#app.face()
