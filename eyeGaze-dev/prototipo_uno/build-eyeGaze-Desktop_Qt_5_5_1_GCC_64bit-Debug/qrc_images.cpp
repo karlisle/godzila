@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 static const unsigned char qt_resource_data[] = {
-  // /home/kharl/Documents/eyeGaze-dev/prototipo_uno/eyeGaze/images/cv_lab.jpg
+  // /home/kharl/Documents/godzila/eyeGaze-dev/prototipo_uno/eyeGaze/images/cv_lab.jpg
   0x0,0x0,0xe4,0x9b,
   0xff,
   0xd8,0xff,0xe0,0x0,0x10,0x4a,0x46,0x49,0x46,0x0,0x1,0x2,0x1,0x0,0x48,0x0,
