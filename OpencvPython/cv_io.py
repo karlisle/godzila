@@ -31,7 +31,7 @@ pts = deque(maxlen=args["buffer"])
 
 # Si la ruta del video no fue proporcionada, redirige a la camara web
 if not args.get("video", False):
-	camara = cv2.VideoCapture()
+	camara = cv2.VideoCapture(0)
 	pass
 else:
 	camara = cv2.VideoCapture(args["video"])
@@ -48,14 +48,21 @@ while True:
 		break
 		pass
 
-	# redimencinar el cuadro, aplicar blur y convertir
-	# al espacio de color HSV
 	frame = imutils.resize(frame, width=600)
-	blurred = cv2.GaussianBlur( frame, (11,11), 0 )
+	blurred = cv2.GaussianBlur(frame, (11,11), 0)
 	hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-	
-
-
-
-	#Si estamos 
 	pass
+
+
+
+	cv2.imshow("Frame", frame)
+	key = cv2.waitKey(1) & 0xFF
+
+	if key == ord("q"):
+		break
+		pass
+	pass
+
+camara.release()
+cv2.destroyAllWindows()
+	

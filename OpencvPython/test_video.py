@@ -58,7 +58,7 @@ class Captura:
 		pass
 
 	def face(self):
-		face_cascade = cv.CascadeClassifier('/home/kharl/Documents/OpencvPython/haarcascade_frontalface_alt2.xml')
+		face_cascade = cv.CascadeClassifier('/home/kharl/Documents/godzila/OpencvPython/haarcascade_frontalface_alt2.xml')
 		cap = cv.VideoCapture(0)
 
 		while True:
@@ -93,7 +93,7 @@ class Captura:
 				cv.rectangle( img, (x, y), (x+3, y+3),(0, 0, 255),2 ) 
 				pass
 			#cv.imshow('mask', mask)
-			cv.imshow('cap', img)
+			#cv.imshow('cap', img)
 			#cv.imshow('erode', transform)
 
 			cv.imshow('img', img)
@@ -180,7 +180,7 @@ class Captura:
 	pass
 
 app = Captura()
-app.imagen()
+#app.imagen()
 #app.figuras()
 #app.video()
-#app.face()
+app.face()
