@@ -31,7 +31,7 @@ pts = deque(maxlen=args["buffer"])
 
 # Si la ruta del video no fue proporcionada, redirige a la camara web
 if not args.get("video", False):
-	camara = cv2.VideoCapture()
+	camara = cv2.VideoCapture(0)
 	pass
 else:
 	camara = cv2.VideoCapture(args["video"])

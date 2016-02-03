@@ -1,0 +1,340 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Simple Sectioned Essay Template
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing essay content.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{book} % Default font size is 12pt, it can be changed here
+		\textheight = 28cm
+		\textwidth = 19cm
+		\topmargin = -1cm
+		\oddsidemargin = -1cm
+		\parindent = 5mm
+
+\usepackage{geometry} % Required to change the page size to A4
+\geometry{a4paper} % Set the page size to be A4 as opposed to the default US Letter
+
+\usepackage{graphicx} % Required for including pictures
+
+\usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+\usepackage{wrapfig} % Allows in-line images such as the example fish picture
+
+%\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\linespread{1} % Line spacing
+
+%\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+
+% Configurar los encabezados, pies de pagina y paginas de capitulo
+% Encabezados
+\lhead[\thepage]{CAPÍTULO \thechapter. \rightmark}
+\chead[]{}
+\rhead[CAPÍTULO \thechapter. \leftmark]{\thepage}
+
+\renewcommand{\headrulewidth}{0.5pt}
+
+% Pie de pagina
+
+\lfoot[]{\today}
+\cfoot[]{}
+\rfoot[J.Carlos Ávila]{}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage{savesym}
+\usepackage{amsmath}
+\savesymbol{iint}
+\usepackage{txfonts}
+\restoresymbol{TXF}{iint}
+
+
+\usepackage[x11names,table]{xcolor}
+\usepackage{pstricks}
+\usepackage[colorinlistoftodos, textwidth=2cm, shadow]{todonotes}
+%\usepackage{hyperref}
+
+
+
+\usepackage[colorlinks]{hyperref}
+\usepackage[nogroupskip,nopostdot]{glossaries}
+\setglossarystyle{altlist}
+\makenoidxglossaries
+
+
+
+
+%\usepackage[toc,style=altlistgroup,hyperfirst=false]{glossaries}
+
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=rosa1,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\urlstyle{same}
+
+\graphicspath{{./images/}} % Specifies the directory where pictures are stored
+
+\definecolor{miorange}{rgb}{0.11, 0.43, 0.21}
+\definecolor{rosa1}{RGB}{236, 46, 80}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------------------------------------------------------------------------
+%	begin {Glosario}
+%----------------------------------------------------------------------------------------
+
+\newglossaryentry{os}{name={SO},description={Es el sistema o conjunto de aplicaciones que permiten que una computadora lleven a cabo sus funciones.}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newglossaryentry{}{name={},description={}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	End {Glosario}
+%----------------------------------------------------------------------------------------
+
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\lhead[\thepage]{CAPÍTULO \thechapter. \rightmark}
+\rhead[CAPÍTULO \thechapter. \leftmark]{\thepage}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Instituto Tecnológico de San Juan del Río}\\[1.5cm] % Name of your university/college
+\textsc{\Large Centro de Investigación en ciencia Aplicada y Tecnología Avanzada}\\[0.5cm] % Major heading such as course name
+%\textsc{\large Minor Heading}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Amplificación interactiva de contenido por medio de la detección de la dirección de la mirada.}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Autor:}\\
+J. Carlos \textsc{\'Avila Resendiz} % Your name
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+Dr. Joaquin  \textsc{Salas Rodriguez} % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[1cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+\includegraphics{./imagenes/itsjr_s.jpg}\\ % Include a department/university logo - this will require the graphicx package
+
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+\newpage
+$\ $
+\thispagestyle{empty}
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------j
+
+\pagenumbering{roman} 
+\tableofcontents % Include a table of contents
+
+\newpage % Begins the essay on a new page instead of on the same page as the table of contents
+\thispagestyle{empty} 
+%\appendix
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+\pagenumbering{arabic}	
+%\setcounter{page}{1}
+	
+			 
+\newpage		 
+\pagestyle{fancy}
+
+
+\chapter{GENERALIDADES}
+\thispagestyle{empty}
+\markboth{GENERALIDADES}{GENERALIDADES}
+
+\begin{minipage}{0.5\textwidth}
+	\begin{flushleft} \large
+	%\emph{•} \\
+	\scriptsize	\textsl{\large “El auténtico genio consiste en la capacidad para evaluar información incierta, 
+								aleatoria y contradictoria.”}\\
+	\scriptsize \textbf{Winston Churchill, estadista.}
+	\end{flushleft}
+\end{minipage}\\[4cm]			
+
+\newpage
+\section{Objetivos}
+	\subsection{Objetivo general}
+	
+		Desarrollar una aplicación de amplificación interactiva para computadoras con sistema operativo Windows, 
+		que asista a personas con bajas capacidades visuales, por medio del seguimiento y estimación de la dirección 
+		de la mirada sobre la pantalla de la computadora y en base a ello amplificar la zona de la pantalla en la 
+		que enfoca la vista.
+	
+	\subsection{Objetivos específicos}
+		Lograr la detección precisa y confiable del movimiento del globo ocular, con la ayuda de herramientas de
+		procesamiento de imágenes.
+		
+		Hacer uso de las API's del sistema operativo que proveen las herramientas que  magnifican la zona de la 
+		pantalla enfocada.
+		
+
+\newpage
+\section{Justificación}
+
+\newpage
+\section{Caracterización de la empresa}
+	\subsection{Datos generales de la empresa}
+	
+	\subsection{Descripción del departamento o área de trabajo}
+
+\newpage
+\section{Problemas a resolver}
+
+\newpage
+\section{Alcances y limitaciones}
+	\subsection{Alcances}
+	\subsection{Limitaciones}
+
+
+
+
+\chapter{FUNDAMENTACIÓN TEÓRICA}
+\markboth{FUNDAMENTACIÓN TEÓRICA}{FUNDAMENTACIÓN TEÓRICA} 
+\thispagestyle{empty}
+
+\section{Ingeniería del software}
+
+\section{Herramientas de desarrollo}
+
+\section{Lenguajes de programación}
+
+\section{Metodologías de desarrollo de software}
+
+\section{Eye Gaze }
+
+\chapter{DESCRIPCIÓN DE ACTIVIDADES REALIZADAS}
+\markboth{ACTIVIDADES REALIZADAS}{ACTIVIDADES REALIZADAS}
+\thispagestyle{empty}
+\newpage
+\section{Análisis}
+
+\section{Diseño}
+
+\section{Desarrollo}
+
+\section{Pruebas}
+
+\section{Implementación}
+
+\section{Retroalimentación}
+
+\section{Resultados}
+
+\section{Conclusiones y recomendaciones}
+
+  	
+%----------------------------------------------------------------------------------------
+%	BEGIN GLOSARIO
+%----------------------------------------------------------------------------------------			
+
+
+%----------------------------------------------------------------------------------------
+%	END GLOSARIO
+%----------------------------------------------------------------------------------------
+
+\section{Referencias Bibliográficas}
+%---------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
+
+
+
+
+%\bibitem{Luckham} 
+%David Luckham
+%[\textit{The Power of Events - An Introduction to Complex Event Processing in Distributed Enterprise Systems}]. 
+%Addison-Wesley, ISBN 0-201-72789-7.
+
+
+%\bibitem{Tello} 
+%Adolfo Lozano Tello
+%[\textit{Iniciación a la programación utilizando lenguajes visuales orientados a eventos.}] [ISBN978-84-7897-714-7]
+%Ed.Bellisco Ediciones Técnicas y Científicas, ISBN 84-95279-49-5. ISBN 978-84-95279-49-1.
+
+
+%\bibitem{} 
+%Ricardo Barona Vázquez
+%[\textit{Asterisk©, telefonía IP en software libre}].
+%\href{Asterisk}{ http://www.enterate.unam.mx/artic/2008/abril/art3.html}
+
+\end{thebibliography}
+
+
+%----------------------------------------------------------------------------------------
+ 
+\end{document}
+
