@@ -38,6 +38,20 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+
+% encabezados
+\lhead[\thepage]{CAPÍTULO \thechapter. \rightmark}
+\chead[]{}
+\rhead[CAPÍTULO \thechapter. \leftmark]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+% pie de pagina
+\lfoot[]{\today}
+\cfoot[]{}
+\rfoot[CICATA]{}
+\renewcommand{\footrulewidth}{0pt}
+
 
 \usepackage{savesym}
 \usepackage{amsmath}
@@ -79,45 +93,11 @@
 \definecolor{rosa1}{RGB}{236, 46, 80}
 
 
-%----------------------------------------------------------------------------------------
-%	begin {Glosario}
-%----------------------------------------------------------------------------------------
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Terminos sueltos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newglossaryentry {ISC}{name={ISC},description={La Ingeniería en Sistemas Computacionales, se encarga del diseño de sistemas informáticos}}
-\newglossaryentry{Internet}{name={Internet},description={\textit{\gls{www}} \'o red mundial de computadoras.}}
-\newglossaryentry{intranet}{name={Intranet},description={Red interna de una organizaci\'on.}}
-\newglossaryentry{www}{name={WWW},description={World Wide Web}}
-\newglossaryentry{tec}{name={ITSJR},description={Instituto Tecnológico de San Juan del Río}}
-\newglossaryentry{SII}{name={SII},description={Sistema Integral de Información}}
-\newglossaryentry{App}{name={App},description={Aplicaci\'on m\'ovil}}
-\newglossaryentry{irc}{name={IRC},description={Internet Room Chat, populares en los primero a\~nos de la \gls{www}, anónimas y temáticas son el ancestro de la mensajería
-											   actual }}
-\newglossaryentry{WServer}{name={LAMP/WAMP},description={Es el acrónimo para referirse a un conjunto de software, utilizado para ejecutar sitios web dinámicos o servicios, 
-														el el caso de WAMP lo que cambia es el \gls{os}, que viene a ser Windows.}}
-\newglossaryentry{url}{name={URL},description={Localizador de recursos uniforme o URL —siglas en inglés de uniform resource locator}}
-\newglossaryentry{wifi}{name={WiFi},description={Su nombre proviene de la marca comercial \textsl{Wi-Fi} es un mecanismo de conexión de dispositivos electrónicos de forma
-												inalámbrica}}
-\newglossaryentry{oop}{name={OOP},description={Programación Orientada a Objetos, refiérase al Apéndice A para mas información}}										
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Terminos relacionados a bases de datos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sistemas Operativos y terminos relacionados %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newglossaryentry{os}{name={SO},description={Es el sistema o conjunto de aplicaciones que permiten que una computadora lleven a cabo sus funciones.}}
-\newglossaryentry{android}{name={Android},description={\gls{os} creado por google para dispositivos móviles, actualmente con la cuota de mercado mas alta.}}
-\newglossaryentry{ios}{name={iOS},description={\gls{os} Creado por \texttt{Apple}, para los dispositivos m\'oviles de la misma marca.}}
-\newglossaryentry{Linux}{name={GNU/Linux}, description={GNU/Linux es uno de los términos empleados para referirse a la combinación del núcleo o kernel libre similar a 
-	\gls{Unix} denominado Linux con el sistema \gls{GNU}. \url{http://es.wikipedia.org/?title=GNU/Linux}}}
-\newglossaryentry{Unix}{name={UNIX}, description={  Unix (registrado oficialmente como UNIX) es un sistema operativo portable, multitarea y multiusuario; desarrollado, 
-	en principio, en 1969, por un grupo de empleados de los laboratorios Bell de AT\&T, entre los que figuran Ken Thompson, Dennis Ritchie y Douglas McIlroy.
-	\url{http://www.unix.org/}} }
-	
-\newglossaryentry{GNU}{name={GNU},description={El Proyecto GNU se inició en 1984 para desarrollar el sistema GNU. El nombre «GNU» (que significa «ñu» en inglés) es un acrónimo
-	 recursivo de «¡GNU No es Unix!». }}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Alglisismos usados %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 

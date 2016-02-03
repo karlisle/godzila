@@ -26,4 +26,4 @@
 \contentsline {section}{\numberline {3.6}Retroalimentaci\IeC {\'o}n}{10}{section.3.6}
 \contentsline {section}{\numberline {3.7}Resultados}{10}{section.3.7}
 \contentsline {section}{\numberline {3.8}Conclusiones y recomendaciones}{10}{section.3.8}
-\contentsline {section}{\numberline {3.9}Referencias Bibliogr\IeC {\'a}ficas}{10}{section.3.9}
+\contentsline {section}{\numberline {3.9}Referencias Bibliogr\IeC {\'a}ficas \& Glosario}{10}{section.3.9}

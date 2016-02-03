@@ -32,7 +32,7 @@
 
 %\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 
-\linespread{1} % Line spacing
+\linespread{1.2} % Line spacing
 
 %\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
 \usepackage[utf8]{inputenc}
@@ -99,8 +99,13 @@
 %	begin {Glosario}
 %----------------------------------------------------------------------------------------
 
-\newglossaryentry{os}{name={SO},description={Es el sistema o conjunto de aplicaciones que permiten que una computadora lleven a cabo sus funciones.}}
+\newglossaryentry{SO}{name={SO},description={Es el sistema o conjunto de aplicaciones que permiten que una computadora lleven a cabo sus funciones.}}
+\newglossaryentry{Linux}{name={Linux},description={GNU/Linux Sistema Operativo creado y distribuido por miles de 
+													personas alrededor del mundo}}
+													
+\newglossaryentry{Windows}{name={Windows},description={Sistema Operativo creado y distribuido por Microsoft.}}
 
+\newglossaryentry{Mac}{name={Mac},description={Sistema Operativo creado y distribuido por Apple}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newglossaryentry{}{name={},description={}}
@@ -233,17 +238,43 @@ $\ $
 		que enfoca la vista.
 	
 	\subsection{Objetivos específicos}
-		Lograr la detección precisa y confiable del movimiento del globo ocular, con la ayuda de herramientas de
-		procesamiento de imágenes.
-		
-		Hacer uso de las API's del sistema operativo que proveen las herramientas que  magnifican la zona de la 
-		pantalla enfocada.
+		\begin{itemize}
+			\item Detección precisa y confiable del movimiento del globo ocular, con la ayuda de software de 
+			procesamiento de imágenes digitales.
+			\item Hacer uso de las API’s del sistema operativo que proveen las herramientas que magnifican la zona de
+			la pantalla seleccionada.
+			\item Integrar los dos componentes anteriores y de esa forma obtener un magnificador con interacción visual.
+			\item Una vez se cuente con un prototipo, realizar pruebas de campo.
+		\end{itemize}
 		
 
 \newpage
 \section{Justificación}
+	Pese al avance desmesurado de la tecnología en los últimos años en donde las capacidades de los dispositivos se
+	duplica cada cierto tiempo, respondiendo de forma bastante precisa la emblemática ley de 
+	\href{https://en.wikipedia.org/wiki/Moore's_law}{Moore} hay aun a día de hoy
+	ciertas cuestiones que no han sido abordadas, quizá en gran parte debido al amplio panorama de problemas que se
+	pueden afrontar con soluciones tecnológicas y de alguna forma ayudar a solventar o/y hacer más fácil las mismas.
+	
+	Aun si los programas de asistencia a personas con capacidades diferentes están a día de hoy cobrando mayor 			  	relevancia en prácticamente todos los aspectos sociales, pues en la actualidad las posibilidades de llevar una vida
+	productiva y sin las limitaciones de antaño, son ya una realidad, entre las herramientas que se proporcionan a este
+	sector de la población están las llamadas tecnologías de asistencia o accesibilidad en entornos informáticos, mismas
+	que van desde iconos monocromáticos de un mayor tamaño, hasta lectores de pantalla y lupas, siendo estas últimas el
+	principal componente proporcionado por las herramientas de accesibilidad de los Sistemas Operativos \gls{SO} actuales,
+	siendo común en los tres mas importantes \gls{Linux}, \gls{Windows}, \gls{Mac}.
+	
+	Siendo de los tres el segundo, Windows, en el cual se enfocaran los esfuerzos de hacer converger las herramientas de
+	accesibilidad ya mencionadas y las tecnologías de visión por computadora CV, para ofrecer a los discapacitados 
+	visuales una forma de hacer uso de la tecnología, mismos que según datos de la OMS de 2002, eran mas de 161 millones
+	de personas, en especifico de computadoras, sin que su limitante visual les impida el poder interactuar con el 
+	equipo.
+	
+	Específicamente el segmento de la población con discapacidad visual en el que se enfoca el desarrollo de este
+	proyecto es el de personas que cuentan con cierto grado de visión, o lo que se conoce como resto visual, pues,
+	siempre que exista un resto visual por mínimo que sea se debe potenciar su uso para alcanzar el máximo desarrollo
+	posible
 
-\newpage
+\newpage 
 \section{Caracterización de la empresa}
 	\subsection{Datos generales de la empresa}
 	
@@ -294,17 +325,21 @@ $\ $
 
 \section{Conclusiones y recomendaciones}
 
-  	
+\section{Referencias Bibliográficas \& Glosario} 	
 %----------------------------------------------------------------------------------------
 %	BEGIN GLOSARIO
 %----------------------------------------------------------------------------------------			
+\newpage
 
+
+\printnoidxglossaries
+\pagenumbering{roman}
 
 %----------------------------------------------------------------------------------------
 %	END GLOSARIO
 %----------------------------------------------------------------------------------------
 
-\section{Referencias Bibliográficas}
+
 %---------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
@@ -337,4 +372,5 @@ $\ $
 %----------------------------------------------------------------------------------------
  
 \end{document}
+
 
