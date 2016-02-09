@@ -1,0 +1,3 @@
+﻿main.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __cdecl INTRAFACE::XXDescriptor::XXDescriptor(int)" (__imp_??0XXDescriptor@INTRAFACE@@QEAA@H@Z) referenced in function "public: void __cdecl Inicalizar::detectFace(void)" (?detectFace@Inicalizar@@QEAAXXZ)
+C:\Users\kharl\Documents\Eye\Libraries\Intraface\lib\IntraFaceDLL-x86d.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+C:\Users\kharl\Documents\Eye\x64\Debug\Eye.exe : fatal error LNK1120: 1 unresolved externals
