@@ -20,11 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="eyegaze.cpp" />
+    <ClCompile Include="findEyeCenter.cpp" />
+    <ClCompile Include="findEyeCorner.cpp" />
+    <ClCompile Include="helpers.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="inicializar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="constants.h" />
     <ClInclude Include="eyegaze.h" />
+    <ClInclude Include="findEyeCenter.h" />
+    <ClInclude Include="findEyeCorner.h" />
+    <ClInclude Include="helpers.h" />
     <ClInclude Include="inicializar.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -1,4 +1,5 @@
 #pragma once
+/*
 
 // Archivos de cabecera de la libreria estandar de C++
 #include <iostream>
@@ -11,8 +12,8 @@
 
 // Archivos de cabecera de Intraface
 //#include <intraface\FaceAlignment.h>
-#include <intraface\XXDescriptor.h>
-#include <intraface\FaceAlignment.h>
+//#include <intraface\XXDescriptor.h>
+//#include <intraface\FaceAlignment.h>
 
 
 
@@ -174,6 +175,7 @@ void Inicalizar::detectFace()
 
 		frame = frameOrig.clone();
 		fOrig = frame.clone();
+
 		if (frame.rows == 0 || frame.cols == 0)
 		{
 			cout << "CAMERA ERROR: No se ha podido obtener la imagen " << endl;
@@ -181,7 +183,7 @@ void Inicalizar::detectFace()
 		}
 		else
 		{
-			face_cascade.detectMultiScale(frame, faces, 1.1, 2, 0 | CV_HAAR_SCALE_IMAGE, Size(30, 30));
+			face_cascade.detectMultiScale(frame, faces, 1.1, 2, 0 | CV_HAAR_SCALE_IMAGE, Size(50, 50));
 
 			for (size_t i = 0; i < faces.size(); i++)
 			{
@@ -217,3 +219,4 @@ void Inicalizar::detectFace()
 }
 
 
+*/
