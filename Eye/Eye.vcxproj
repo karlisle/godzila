@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="eyegaze.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="inicializar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="eyegaze.h" />
     <ClInclude Include="inicializar.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -81,16 +83,18 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\kharl\Documents\Eye\Libraries\Intraface\include;$(OPENCV_DIR)\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include;$(OPENCV_DIR)\..\..\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\kharl\Documents\Eye\Libraries\Intraface\lib;$(OPENCV_DIR)\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_ts300d.lib;opencv_world300d.lib;C:\Users\kharl\Documents\Eye\Libraries\Intraface\lib\\IntraFaceDLL-x86d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\lib;$(OPENCV_DIR)\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_ts300d.lib;opencv_world300d.lib</AdditionalDependencies>
+      <AdditionalOptions>IntraFace_x86d.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -112,13 +116,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\kharl\Documents\Eye\Libraries\Intraface\include;$(OPENCV_DIR)\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include;$(OPENCV_DIR)\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalOptions>IntraFaceDLL-x86.lib %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Users\kharl\Documents\Eye\Libraries\Intraface\lib;$(OPENCV_DIR)\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_ts300.lib;opencv_world300.lib;C:\Users\kharl\Documents\Eye\Libraries\Intraface\lib\\IntraFaceDLL-x86.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\lib;$(OPENCV_DIR)\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_ts300.lib;opencv_world300.lib</AdditionalDependencies>
+      <AdditionalOptions>IntraFaceDLL-x86.dll %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

@@ -2,6 +2,7 @@
 #include <iostream>
 #include "inicializar.h"
 
+
 using namespace std;
 
 int main()

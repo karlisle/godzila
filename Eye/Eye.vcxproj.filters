@@ -21,9 +21,15 @@
     <ClCompile Include="inicializar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="eyegaze.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inicializar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="eyegaze.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

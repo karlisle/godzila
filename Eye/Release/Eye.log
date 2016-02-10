@@ -1,1 +1,62 @@
-﻿opencv_world300.lib(opencv_world300.dll) : fatal error LNK1112: module machine type 'x64' conflicts with target machine type 'X86'
+﻿  IntraFaceDLL-x86.lib
+IntraFaceDLL-x86.lib(1): error C2059: syntax error: '<'
+IntraFaceDLL-x86.lib(2): error C2018: unknown character '0x60'
+IntraFaceDLL-x86.lib(3): error C2059: syntax error: ')'
+IntraFaceDLL-x86.lib(3): error C2018: unknown character '0x16'
+IntraFaceDLL-x86.lib(3): error C2018: unknown character '0x18'
+IntraFaceDLL-x86.lib(3): error C2018: unknown character '0x19'
+IntraFaceDLL-x86.lib(3): error C3873: '0x201e': this character is not allowed as a first character of an identifier
+IntraFaceDLL-x86.lib(3): error C3872: '0x24': this character is not allowed in an identifier
+IntraFaceDLL-x86.lib(3): error C2018: unknown character '0x1f'
+IntraFaceDLL-x86.lib(3): error C3873: '0xb0': this character is not allowed as a first character of an identifier
+IntraFaceDLL-x86.lib(3): error C2018: unknown character '0x1e'
+IntraFaceDLL-x86.lib(3): error C2018: unknown character '0x1b'
+IntraFaceDLL-x86.lib(3): error C2014: preprocessor command must start as first nonwhite space
+IntraFaceDLL-x86.lib(3): error C2018: unknown character '0x1d'
+IntraFaceDLL-x86.lib(3): error C2143: syntax error: missing ')' before ';'
+  main.cpp
+C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(80): warning C4251: 'INTRAFACE::FaceAlignment::m_DR': class 'std::vector<cv::Mat,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=cv::Mat
+          ]
+C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(80): warning C4251: 'INTRAFACE::FaceAlignment::m_Db': class 'std::vector<cv::Mat,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=cv::Mat
+          ]
+C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(80): warning C4251: 'INTRAFACE::FaceAlignment::m_TR': class 'std::vector<cv::Mat,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=cv::Mat
+          ]
+C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(80): warning C4251: 'INTRAFACE::FaceAlignment::m_Tb': class 'std::vector<cv::Mat,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=cv::Mat
+          ]
+C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(81): warning C4251: 'INTRAFACE::FaceAlignment::m_winsize': class 'std::vector<int,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(82): warning C4251: 'INTRAFACE::FaceAlignment::m_flags': class 'std::vector<bool,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=bool
+          ]
+C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(83): warning C4251: 'INTRAFACE::FaceAlignment::m_w': class 'cv::Mat' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+  C:\opencv\build\include\opencv2/core/mat.hpp(731): note: see declaration of 'cv::Mat'
+C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(84): warning C4251: 'INTRAFACE::FaceAlignment::m_meanShape2D': class 'cv::Mat' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+  C:\opencv\build\include\opencv2/core/mat.hpp(731): note: see declaration of 'cv::Mat'
+C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(86): warning C4251: 'INTRAFACE::FaceAlignment::m_cropROI': class 'cv::Rect_<int>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(87): warning C4251: 'INTRAFACE::FaceAlignment::m_offset': class 'cv::Rect_<double>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+c:\users\kharl\documents\git\godzila\eye\inicializar.h(68): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.h(70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.h(71): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.h(72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.h(154): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\kharl\documents\git\godzila\eye\inicializar.h(185): warning C4018: '<': signed/unsigned mismatch
+c:\users\kharl\documents\git\godzila\eye\inicializar.h(187): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.h(188): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.h(154): warning C4101: 'score': unreferenced local variable
