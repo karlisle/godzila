@@ -10,12 +10,17 @@
 #include <opencv2\highgui\highgui.hpp>
 #include <opencv2\imgproc\imgproc.hpp>
 
+#include <intraface\FaceAlignment.h>
+#include <intraface\XXDescriptor.h>
 
 #include <iostream>
 #include <queue>
 #include <stdio.h>
 #include <math.h>
 #include <Windows.h>
+
+#include <fstream>
+
 
 #include "constants.h"
 #include "eyegaze.h"
@@ -45,7 +50,7 @@ public:
 	//cv::Point2f findSubpixelEyeCorner(cv::Mat region, cv::Point maxP);
 
 
-	String face_cascade_name = "models/haarcascade_frontalface_alt2.xml";
+	string face_cascade_name = "models/haarcascade_frontalface_alt2.xml";
 	CascadeClassifier face_cascade;
 
 	string main_window_name = "Capture - Face Detection";
@@ -56,6 +61,7 @@ public:
 	Mat debugImage;
 	Mat skinCrCbHist = Mat::zeros(Size(256, 256), CV_8UC1);
 
+	// Define required variables and data structures
 
 
 private:

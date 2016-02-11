@@ -101,7 +101,7 @@
     <Link>
       <AdditionalLibraryDirectories>C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\lib;$(OPENCV_DIR)\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>opencv_ts300d.lib;opencv_world300d.lib</AdditionalDependencies>
-      <AdditionalOptions>IntraFace_x86d.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>IntraFaceDLL-x86d.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

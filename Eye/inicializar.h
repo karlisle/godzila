@@ -1,18 +1,23 @@
 #pragma once
-/*
+
 
 // Archivos de cabecera de la libreria estandar de C++
 #include <iostream>
 #include <vector>
 #include <fstream>
+
 // Archivos de cabecera de la libreria OpenCV
 #include <opencv2\core\core.hpp>
 #include <opencv2\highgui\highgui.hpp>
 #include <opencv2\opencv.hpp>
 
+//Cabeceras locales
+#include "eyegaze.h"
+
+
 // Archivos de cabecera de Intraface
-//#include <intraface\FaceAlignment.h>
-//#include <intraface\XXDescriptor.h>
+#include <intraface\FaceAlignment.h>
+#include <intraface\XXDescriptor.h>
 //#include <intraface\FaceAlignment.h>
 
 
@@ -127,14 +132,14 @@ void Inicalizar::detectFace()
 
 	// Fuente de video correctamente abirta
 	// Inicializar un objeto de XXDescriptor
-	//INTRAFACE::XXDescriptor xxd(4);
+	INTRAFACE::XXDescriptor xxd(4);
 	// Inicilaizar un objeto de FaceAlignment
-	//INTRAFACE::FaceAlignment fa(detectionModel, trackingModel, &xxd);
-	//if ( !fa.Initialized() )
-	//{
-	//	cout << "FaceAligment Error: No se ha podico cargar el modelo de deteccion" << endl;
-	//	return;
-	//}
+	INTRAFACE::FaceAlignment fa(detectionModel, trackingModel, &xxd);
+	if ( !fa.Initialized() )
+	{
+		cout << "FaceAligment Error: No se ha podico cargar el modelo de deteccion" << endl;
+		return;
+	}
 	// Cargar el modelo de deteccion de OPenCV
 	CascadeClassifier face_cascade;
 	CascadeClassifier eye_cascade;
@@ -190,9 +195,8 @@ void Inicalizar::detectFace()
 				Point center(faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5);
 				ellipse(frame, center, Size(faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar(255, 0, 255), 4, 8, 0);
 
-				Mat faceROI = frameOrig(faces[i]);
 				
-
+				Mat faceROI = frameOrig(faces[i]);
 				eye_cascade.detectMultiScale(faceROI, eyes, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(30, 30));
 				for (size_t j = 0; j < eyes.size(); j++)
 				{
@@ -219,4 +223,3 @@ void Inicalizar::detectFace()
 }
 
 
-*/

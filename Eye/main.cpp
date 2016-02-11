@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include "inicializar.h"
-#include "eyegaze.h"
+//#include "eyegaze.h"
 
 
 using namespace std;
