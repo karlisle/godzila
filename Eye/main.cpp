@@ -12,11 +12,9 @@ int main()
 	cout << "\n\n\n";
 	cout << "Inicializando sistemas, espere....." << endl;
 
-	// Instanciar la clase EyeGaze
-	EyeGaze run;
-	run.start();
-	//Inicalizar comenzar;
-	//comenzar.detectFace();
+	Inicializar inicio;
+	inicio.detect();
+	
 	cin.get();
 	cout << "Oprima 'Enter' para salir!!" << endl;
 	return 0;
