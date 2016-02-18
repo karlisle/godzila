@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Godzila
 
 # Bitacora de actividades CICATA
@@ -47,3 +48,10 @@ El dia d hoy unicmante se estudiaron las diferentes formas de procesar una image
 
 1. Se comenzo con el presesamiento con diferentes herramientas que provee OpenCV, aunque los prototipos se hicieron con python, portarlos a C++ no sera complicado.
 2. 
+=======
+# godzila
+
+Por ahora todo esta en la rama _mini_godz_, hasta que hay una versión minimamente funcional o prototipo, hasta ahora los dos componentes están en desarrollo pero no se han integrado.
+
+Para mas detalles leer la bitácora incluida en la rama de desarrollo subyacente en: [mini_godz](https://github.com/karlisle/godzila/tree/mini_godz)
+>>>>>>> master

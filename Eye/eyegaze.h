@@ -5,69 +5,71 @@
 #define EYE_CORNER_H
 
 //#include "opencv2/imgproc/imgproc.hpp"
-#include <opencv2\imgproc\imgproc.hpp>
-#include <opencv2\objdetect\objdetect.hpp>
+#include <opencv2\core\core.hpp>
 #include <opencv2\highgui\highgui.hpp>
 #include <opencv2\imgproc\imgproc.hpp>
-
-#include <intraface\FaceAlignment.h>
-#include <intraface\XXDescriptor.h>
-
-#include <iostream>
-#include <queue>
-#include <stdio.h>
-#include <math.h>
-#include <Windows.h>
-
-#include <fstream>
+// Cabeceras de las libreria estandar
+#include<exception>
+#include <vector>
+// Cabeceras locales
+#include "adaptativecanny.h"
+#include "newhoug.h"
 
 
-#include "constants.h"
-#include "eyegaze.h"
-#include "findEyeCenter.h"
-#include "findEyeCorner.h"
 
 using namespace std;
 using namespace cv;
 
+class ImageTypeExeption : public exception
+{
+	virtual const char* what() const throw()
+	{
+		return "Error en el tipo de imagen del ojo: la imagen debe ser BGR";
+	}
+};
+class ImageSizeException : public std::exception
+{
+	virtual const char* what() const throw()
+	{
+		return "Imagen del ojo, vacia!";
+	}
+};
 
-
-#define kEyeLeft true
-#define kEyeRight false
+class IrisDetectionException : public std::exception
+{
+	virtual const char* what() const throw()
+	{
+		return "contorno del iris no encontrado!";
+	}
+};
 
 class EyeGaze
 {
 public:
-
 	// Constructor
 	EyeGaze(){
 	}
+	Vec3i computeIrisCenter(Mat eye, Mat K, float depth, bool thresh, bool maxD, int sColor, int sSpace, int options);
 
-	void start();
-	void detectandDisplay(Mat frame);
-	//void releaseCornerKernels();
-	//cv::Point2f findEyeCorner(cv::Mat region, bool left, bool left2);
-	//cv::Point2f findSubpixelEyeCorner(cv::Mat region, cv::Point maxP);
+	Point3i computeHeadposition(Mat R, Mat K, Point El, Point Er, int H, int D);
 
-
-	string face_cascade_name = "models/haarcascade_frontalface_alt2.xml";
-	CascadeClassifier face_cascade;
-
-	string main_window_name = "Capture - Face Detection";
-	string face_windows_name = "Capture - Face ";
-
-	//RNG rng(12345);
-
-	Mat debugImage;
-	Mat skinCrCbHist = Mat::zeros(Size(256, 256), CV_8UC1);
-
-	// Define required variables and data structures
+	inline Mat getEqualizedEye()
+	{
+		return eqEye;
+	}
 
 
+	
 private:
+	// Define constants
+	static const int MIN_IRIS_RADIUS = 5; // mm
+	static const int MAX_IRIS_RADIUS = 7; // mm
+
+										  // Define variables
+	cv::Mat eqEye; // Equalized B/W eye image
+	cv::Mat edges; // Eye edges binary map
+	std::vector<int> range; // Depth scaled radius range
+	NewHough hough;
 
 };
-
-
-
 #endif

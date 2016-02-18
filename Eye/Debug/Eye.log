@@ -35,11 +35,29 @@ c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\f
   c:\opencv\build\include\opencv2\core\mat.hpp(731): note: see declaration of 'cv::Mat'
 c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\facealignment.h(86): warning C4251: 'INTRAFACE::FaceAlignment::m_cropROI': class 'cv::Rect_<int>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
 c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\facealignment.h(87): warning C4251: 'INTRAFACE::FaceAlignment::m_offset': class 'cv::Rect_<double>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+c:\users\kharl\documents\git\godzila\eye\newhoug.h(13): warning C4005: 'PI': macro redefinition
+  c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\marcos.h(39): note: see previous definition of 'PI'
 c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(20): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(60): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(119): warning C4018: '<': signed/unsigned mismatch
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(88): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(157): warning C4018: '<': signed/unsigned mismatch
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(171): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(172): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(183): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(184): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(185): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(186): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(187): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(188): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(191): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(192): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(193): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(194): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(195): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(196): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(222): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(229): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Eye.vcxproj -> C:\Users\kharl\Documents\Git\godzila\Eye\Debug\Eye.exe
   Eye.vcxproj -> C:\Users\kharl\Documents\Git\godzila\Eye\Debug\Eye.pdb (Partial PDB)

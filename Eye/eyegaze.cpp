@@ -1,117 +1,134 @@
 
 #include "eyegaze.h"
 
-void EyeGaze::start()
-{
-	
-	cout << "***********************";
-	cout << "Detectando componentes..." << endl;
-	cout << "***********************";
 
-	if (!face_cascade.load(face_cascade_name))
+
+Vec3i EyeGaze::computeIrisCenter(Mat eye, Mat K, float depth, bool thresh, bool maxD, int sColor, int sSpace, int options)
+{
+	// revisar el tipo de imagen y el tamaño
+	if (eye.type() != CV_8UC3)
 	{
-		cout << "Error loading face cascade, fix path" << endl;
+		throw ImageTypeExeption();
+		cout << "ERROR: Tipo incorrecto de imagen!!" << endl;
+	}
+	if (eye.rows < 1 || eye.cols < 1)
+	{
+		throw ImageSizeException();
+		cout << "ERROR: El frame no contine informacion!!" << endl;
+	}
+	cout << "SUCCES:Procediendo!!" << endl;
+	// Intentar ajustar la nitides de la imagen
+	GaussianBlur(eye, eqEye, Size(0, 0), 10);
+	addWeighted(eye, 1.5, eqEye, -0.5, 0, eye);
+
+	// Si tamaño y el tipo de la imagen son correctos: pre-asignar matrices
+	eqEye = eye.clone();
+	Mat eyeTH = Mat(eqEye.rows, eqEye.cols, CV_8UC1);
+	edges = Mat(eqEye.rows, eqEye.cols, CV_8UC1);
+	Mat GX, GY, mag;
+	int maxTH, minTH;
+
+	// Filtrar la imagen RGB is es requerido
+	if (sColor > 0 && sSpace > 0)
+	{
+		cout << "Filtrando rgb!!" << endl;
+		Mat tmp = eqEye.clone();
+		bilateralFilter(tmp, eqEye, -1, sColor, sSpace);
 	}
 
-	VideoCapture cap(0);						// Habrir la camara por defecto.
-
-	if (!cap.isOpened())						// Revisamos si fue exitosa
+	// Hacer borrosa la imagen para reducir el ruido
+	//GaussianBlur(eye, eye, Size(3, 3), 0, 0, BORDER_DEFAULT);
+	// Convertir la imagen filtrada o no, a escala de grises y estraer los canales de luminosidad 
+	// de la imagen YUV  convertida
+	cvtColor(eqEye, eqEye, CV_BGR2GRAY);
+	// Maximizar el contraste de la imagen en grises
+	equalizeHist(eqEye, eqEye);
+	
+	// Umbralizar la imagen con el metodo Otsu's, si es requerido (umbralizacion adaptativa)
+	if (thresh)
 	{
-		cout << "ERROR: No se encontro ningun dispositivo" << endl;
-		return;
+		cout << "Umbralizar la imagen" << endl;
+		threshold(eqEye, eyeTH, 0, 255, CV_THRESH_BINARY_INV + THRESH_OTSU);
+		// LLenar los huecos
+		vector<vector<Point>> contours;
+		findContours(eyeTH, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
+		if (contours.size() > 0)
+		{
+			for (int i = 0; i < contours.size(); i++)
+			{
+				drawContours(eyeTH, contours, i, 255, CV_FILLED);
+			}
+		}
+	}
+
+	// Calcular los bordes en la imagen en escala de grises umbralizada
+	if (thresh)
+	{
+		// Aplicar un umbralizado adaptivo inteligente a la imagen umbralizada
+		// En este caso no se usa
+		edges = AdaptativeCanny::adaptativeCanny(eyeTH, GX, GY, mag, maxTH, minTH);
 	}
 	else
 	{
-		cout << "Se a detectado un dispositivo de video: " << endl;
+		edges = AdaptativeCanny::adaptativeCanny(eqEye, GX, GY, mag, maxTH, minTH);
 	}
 
-	cout << "Ok, ahora vamos a encontrar los ojos..." << endl;
-
-
-
-	// Define required variables and data structures
-	char detectionModel[] = "models/DetectionModel-v1.5.bin";
-	char trackingModel[] = "models/TrackingModel-v1.10.bin";
-	
-	VideoWriter video;
-	Mat fOrig;
-	Mat lEye;
-	Mat rEye;
-	Mat lEyeBW;
-	Mat rEyeBW;
-	Mat leftEyeBW;
-	Mat rightEyeBW;
-	Vec3i lCircle;
-	Vec3i rCircle;
-	int fnumber = 0;
-	int width = (int)cap.get(CV_CAP_PROP_FRAME_WIDTH);
-	int height = (int)cap.get(CV_CAP_PROP_FRAME_HEIGHT);
-
-	INTRAFACE::XXDescriptor xxd(4);
-	INTRAFACE::FaceAlignment fa(detectionModel, trackingModel, &xxd);
-
-	if ( !fa.Initialized() )
-	{
-		cout << "ERROR: FaceAligment no se puede inicializar." << endl;
-		return;
-	}
-	
-	VideoCapture capture;
-	capture.open(0);
-	Mat frame;
-	bool isDetect = true;
-	float score, notFace = 0.3;
-	Mat X, X0;
-	vector<Rect> faces;
-
-	if ( capture.isOpened() )
-	{
-		while (true)
-		{
-			fnumber++;
-			Mat frame;
-			Mat frameOrig;
-
-
-			capture.read(frame);
-			Mat gray_frame;
-			cvtColor(frame, gray_frame, COLOR_BGR2GRAY);
-
-			
-			if (gray_frame.rows == 0 || gray_frame.cols == 0 )
-			{
-				cout << "Error: No frame!!" << endl;
-				break;
-			}
-			else
-			{
-				vector<Rect> rostros;
-				cout << "Ok, there's a frame" << endl;
-				face_cascade.detectMultiScale(gray_frame, faces, 1.1, 2, 0 | CV_HAAR_SCALE_IMAGE, Size(30, 30));
-				for (size_t i = 0; i < faces.size(); i++)
-				{
-					Point center( faces[i].x + faces[i].width *0.5, faces[i].y + faces[i].height * 0.5 );
-					ellipse(gray_frame, center, Size(faces[i].width * 0.5, faces[i].height * 0.5), 0, 0, 360, Scalar(255, 0, 255), 4, 8, 0);
-					
-
-				}
-				
-			}
-			if (waitKey(27) >= 0)
-			{
-				break;
-			}
-		imshow("Main", gray_frame);
-		}
-	}
-	cvDestroyAllWindows();
-	capture.release();
 }
 
-void EyeGaze::detectandDisplay(Mat frame)
+Point3i EyeGaze::computeHeadposition(Mat R, Mat K, Point El, Point Er, int H, int D)
 {
-	
-	
-	
-		
+	int ul = El.x;
+	int vl = El.y;
+	int ur = Er.x;
+	int vr = Er.y;
+	double fx = K.at<float>(0, 0);
+	double fy = K.at<float>(1, 1);
+	int cx = K.at<float>(0, 2);
+	int cy = K.at<float>(1, 2);
+
+	//R = R';
+
+	Vec3f r1, r2, r3;
+	r1[0] = R.at<float>(0, 0);
+	r1[1] = R.at<float>(0, 1);
+	r1[2] = R.at<float>(0, 2);
+	r2[0] = R.at<float>(1, 0);
+	r2[1] = R.at<float>(1, 1);
+	r2[2] = R.at<float>(1, 2);
+	r3[0] = R.at<float>(2, 0);
+	r3[1] = R.at<float>(2, 1);
+	r3[2] = R.at<float>(2, 2);
+
+	Point3f Olh(-D / 2.0, H, 0);
+	Point3f Orh(D / 2.0, H, 0);
+
+	double a = ur - cx;
+	double b = ul - cx;
+	double c = vr - cy;
+	double d = vl - cy;
+
+	double e = r3[0] * (Orh.x - Olh.x) + r3[1] * (Orh.y - Olh.y) + r3[2] * (Orh.z - Olh.z);
+
+	double A = a * a * fy * fy + c * c * fx * fx + fx * fx * fy * fy;
+	double B = b * b * fy * fy + d * d * fx * fx + fx * fx * fy * fy;
+	double C = -2 * a * b * fy * fy - 2 * c * d * fx * fx - 2 * fx * fx * fy * fy;
+	double E = -D * D * fx * fx * fy * fy;
+
+	double z1 = (-(2 * A + C)* e + sqrt((2 * A + C) * (2 * A + C) * e * e - 4 * (A + B + C) * E)) / (2 * (A + B + C));
+	double z2 = (-(2 * A + C)* e - sqrt((2 * A + C) * (2 * A + C) * e * e - 4 * (A + B + C) * E)) / (2 * (A + B + C));
+
+	// Select the correct solution (z > 0)
+	double zl = 0;
+	if (z1 > 0)
+		zl = z1;
+	else
+		zl = z2;
+
+	// Sobsitute solution to find the remaining coordinates
+	double tx = floor(zl * (ul - cx) / fx - (r1[0] * Olh.x + r1[1] * Olh.y + r1[2] * Olh.z) + 0.5);
+	double ty = floor(zl * (vl - cy) / fy - (r2[0] * Olh.x + r2[1] * Olh.y + r2[2] * Olh.z) + 0.5);
+	double tz = floor(zl - (r3[0] * Olh.x + r3[1] * Olh.y + r3[2] * Olh.z) + 0.5);
+
+	return Point3i((int)tx, (int)ty, (int)tz);
 }
+

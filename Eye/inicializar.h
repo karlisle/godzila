@@ -18,6 +18,9 @@
 // Librerias de IntraFace
 #include <intraface\FaceAlignment.h>
 #include <intraface\XXDescriptor.h>
+// Cabeceras locales
+#include "eyegaze.h"
+#include "newhoug.h"
 
 using namespace std;
 using namespace cv;
@@ -28,9 +31,9 @@ public:
 	// Inicializar constructor
 	Inicializar() {
 	}
-
 	int detect();
 private:
+
 
 };
 

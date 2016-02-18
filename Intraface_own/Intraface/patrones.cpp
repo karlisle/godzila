@@ -44,14 +44,6 @@ void drawPose(cv::Mat& img, const cv::Mat& rot, float lineL)
 	line(img, p0, cv::Point(P.at<float>(0, 3), P.at<float>(1, 3)), cv::Scalar(0, 0, 255), thickness, lineType);
 }
 
-void cosasLocas(Mat cuadro)
-{
-	cout << "Cosas locas a la orden señor!!" << endl;
-	imshow("Main", cuadro);
-}
-
-
-
 
 int main()
 {
@@ -87,7 +79,9 @@ int main()
 	Mat X, X0;
 	string winname = ("Demo Intraface Tracker");
 	capture.open(0);
-	Mat frame;
+	Mat fOrig;
+	vector<Rect> faces;
+	vector<Rect> eyes;
 	
 	
 	if (capture.isOpened())
@@ -96,22 +90,61 @@ int main()
 		{
 			Mat frame;
 			Mat frameOrig;
-			capture.read(frame);
-			Mat gray_frame;
-			cvtColor(frame, gray_frame, COLOR_BGR2GRAY);
+			capture.read(frameOrig);
+			frame = frameOrig.clone();
+			//fOrig = frame.clone();
+			//Mat gray_frame;
+			//cvtColor(frame, gray_frame, COLOR_BGR2GRAY);
 
 
-			if (gray_frame.rows == 0 || gray_frame.cols == 0)
+			if (frame.rows == 0 || frame.cols == 0)
 			{
 				cout << "Error: No frame!!" << endl;
 				break;
 			}
+			if (isDetect)
+			{
+				face_cascade.detectMultiScale(frame, faces, 1.2, 2, 0, Size(40, 40));
+
+				if (faces.empty())
+				{
+					imshow("Main", frame);
+					key = waitKey(5);
+					continue;
+				}
+
+				if (fa.Detect(frame, faces[0], X0, score) != INTRAFACE::IF_OK)
+				{
+					break;
+				}
+				isDetect = false;
+			}
 			else
 			{
-				cout << "Llamando a cosas locas xD" << endl;
-				cosasLocas(gray_frame);
+				if (fa.Track(frame, X0, X, score))
+				{
+					break;
+				}
+				X0 = X;
 			}
-			
+			if (score < notFace)
+			{
+				isDetect = true;
+			}
+			else
+			{
+				cout << "Ok, show that!!";
+				for (int i = 0; i < faces.size(); i++)
+				{
+					circle(frame, Point( (int)X0.at<float>(0, i), (int)X0.at<float>(1,i) ), 5, Scalar(0, 255, 0), -1);
+				}
+				INTRAFACE::HeadPose hp;
+				fa.EstimateHeadPose(X0, hp);
+				drawPose(frame, hp.rot, 50);
+				cout << ".";
+			}
+
+			imshow("Main",frame);
 			
 			if (waitKey(27) >= 0)
 			{
