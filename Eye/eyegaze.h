@@ -11,6 +11,7 @@
 // Cabeceras de las libreria estandar
 #include<exception>
 #include <vector>
+#include <Windows.h>
 // Cabeceras locales
 #include "adaptativecanny.h"
 #include "newhoug.h"
@@ -53,9 +54,19 @@ public:
 
 	Point3i computeHeadposition(Mat R, Mat K, Point El, Point Er, int H, int D);
 
+
+
 	inline Mat getEqualizedEye()
 	{
 		return eqEye;
+	}
+	inline vector<int> getIrisRange()
+	{
+		return range;
+	}
+	inline vector<vector<vector<double>>> getHoughAccumulator()
+	{
+		return hough.getHoughAccumulator();
 	}
 
 

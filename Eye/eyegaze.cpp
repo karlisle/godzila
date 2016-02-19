@@ -72,7 +72,7 @@ Vec3i EyeGaze::computeIrisCenter(Mat eye, Mat K, float depth, bool thresh, bool 
 	{
 		edges = AdaptativeCanny::adaptativeCanny(eqEye, GX, GY, mag, maxTH, minTH);
 	}
-
+	
 	// Calcular el rango del Iris en [pxl] de acuerdo a la profundidad del ojo ([10, 14]) mm, o ([5,7]) mm de radio, en metros.
 	// Para una imagen de 1280x720 la formula es: r = R * sqrt(fx^2 + fy^2) / D 
 	// con R = radio [m], D = profundidad (m) y fx y fy = longitud focal [pxl], r = radio.
@@ -94,8 +94,10 @@ Vec3i EyeGaze::computeIrisCenter(Mat eye, Mat K, float depth, bool thresh, bool 
 	}
 
 	// A
-
-
+	Vec3i circle;
+	//Sleep(2000);
+	vector<Vec3i> circles = hough.circle_hough(edges, range, true, true, 100, GX, GY, mag, options);
+	
 }
 
 Point3i EyeGaze::computeHeadposition(Mat R, Mat K, Point El, Point Er, int H, int D)
