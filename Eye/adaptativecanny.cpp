@@ -93,4 +93,5 @@ void AdaptativeCanny::selectThreshold(cv::Mat magGrad, double PercentOfPixelsNot
 		lowThresh = ThresholdRatio * highThresh;
 	}
 
+
 }

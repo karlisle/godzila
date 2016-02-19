@@ -73,6 +73,29 @@ Vec3i EyeGaze::computeIrisCenter(Mat eye, Mat K, float depth, bool thresh, bool 
 		edges = AdaptativeCanny::adaptativeCanny(eqEye, GX, GY, mag, maxTH, minTH);
 	}
 
+	// Calcular el rango del Iris en [pxl] de acuerdo a la profundidad del ojo ([10, 14]) mm, o ([5,7]) mm de radio, en metros.
+	// Para una imagen de 1280x720 la formula es: r = R * sqrt(fx^2 + fy^2) / D 
+	// con R = radio [m], D = profundidad (m) y fx y fy = longitud focal [pxl], r = radio.
+
+	// Encontrar el ajuste preciso del circulo con el diamtro del Iris
+
+	float  multiplier = sqrt(K.at<float>(0, 0) * K.at<float>(0, 0) + K.at<float>(1, 1) * K.at<float>(1, 1));
+	int minRadPxl = 0.8 * MIN_IRIS_RADIUS * multiplier / depth;
+	int maxRadPxl = MAX_IRIS_RADIUS * multiplier / depth;
+	range = vector<int>(min(10, maxRadPxl - minRadPxl + 1));
+	int step = 1;
+	if (range.size() == 10)
+	{
+		step = floor((maxRadPxl + minRadPxl + 1) / 10);
+	}
+	for (int i = 0; i < range.size(); ++i)
+	{
+		range[i] = minRadPxl + i * step;
+	}
+
+	// A
+
+
 }
 
 Point3i EyeGaze::computeHeadposition(Mat R, Mat K, Point El, Point Er, int H, int D)

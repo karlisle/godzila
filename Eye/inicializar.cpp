@@ -83,6 +83,10 @@ int Inicializar::detect()
 	Mat rightEyeBW;
 	Vec3i lCircle;
 	Vec3i rCircle;
+	// Creamos unas ventanas
+	namedWindow("Gaze", CV_WINDOW_NORMAL);
+	namedWindow("LeftEye", CV_WINDOW_AUTOSIZE);
+	namedWindow("RightEye", CV_WINDOW_AUTOSIZE);
 	int key = 0;
 	bool isDetect = true;
 	float score, notFace = 0.3;
@@ -233,11 +237,20 @@ int Inicializar::detect()
 					cvtColor(rEyeBW, rightEyeBW, CV_GRAY2BGR);
 					
 					Mat tmp;
+					// Ojo Izquierdo
 					cout << lCircle[0] << " : " << lCircle[1] << " : " << lCircle[2] << endl;
 					circle(leftEyeBW, Point(lCircle[1], lCircle[0]), lCircle[1], Scalar(0, 0, 255));
 					circle(leftEyeBW, Point(lCircle[1], lCircle[0]), 1, Scalar(0, 0, 255));
 					resize(leftEyeBW, tmp, Size(3 * leftEye.cols, 3 * leftEye.rows));
 					leftEyeBW = tmp.clone();
+					// Ojo Derecho
+					circle( rightEyeBW, Point(rCircle[1], rCircle[0]), rCircle[1], Scalar(0, 0, 255));
+					circle( rightEyeBW, Point(rCircle[1], rCircle[0]), 1, Scalar(0, 0, 255));
+					resize(rightEyeBW, tmp, Size(3*rightEye.cols, 3*rightEye.rows));
+					rightEyeBW = tmp.clone();
+
+					moveWindow("LeftEye", 110, 110);
+					moveWindow("RightEye", 110 + 4 * leftBoundRect.width, 110);
 
 					
 					// Dibujar estimacion del iris
