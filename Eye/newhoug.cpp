@@ -10,6 +10,7 @@ vector<Vec3i> NewHough::circle_hough(Mat edges, vector<int> range, bool same, bo
 	cout << "Hola desde New Hough!!" << endl;
 	vector<Point> idx;
 	unsigned char *rowPtr;
+
 	for (int i = 0; i < edges.rows; ++i)
 	{
 		rowPtr = edges.ptr<unsigned char>(i);
@@ -121,18 +122,22 @@ vector<Vec3i> NewHough::circle_hough(Mat edges, vector<int> range, bool same, bo
 			}
 		}
 	}
-
+	
 	if (options & OPTIONS::QUANTIZED_GRADIENT)
 	{
 		cout << "QUANTIZED_GRADIENT" << endl;
-		vector<Point3i> points;
+		
+		
+		
 		for (int f = 0; f < idx.size(); ++f)
 		{
 			cout << "Primer for" << endl;
 			for (int r = 0; r < range.size(); ++r)
 			{
 				cout << "Segundo for" << endl;
-				points = lut[8 * (range[r] - 1) + qGrad[f]];
+				cout << (8 * (range[r] - 1) + qGrad[f]) << endl;
+				vector<Point3i> points;
+				
 				for (int i = 0; i < points.size(); ++i)
 				{
 					cout << "Tercer for" << endl;
@@ -142,16 +147,17 @@ vector<Vec3i> NewHough::circle_hough(Mat edges, vector<int> range, bool same, bo
 						{
 							hAccumulator[points[i].x + idx[f].x + margin][points[i].y + idx[f].y + margin][r] += mag.at<float>(points[i].x + idx[f].x, points[i].y + idx[f].y) * 255 / maxMag;
 						}
-						else;
 					}
 					else
 					{
 						hAccumulator[points[i].x + idx[f].x + margin][points[i].y + idx[f].y + margin][r] += 1;
 					}
 				}
+				
 			}
 		}
 	}
+	
 
 	if (same)
 	{
@@ -221,20 +227,28 @@ vector<Vec3i> NewHough::circle_hough(Mat edges, vector<int> range, bool same, bo
 
 	cout << "Llamando a circle_houghpeaks...." << endl;
 	return circle_houghpeaks(hAccumulator, range, npeaks, margin);
+	
 
 }
 
 
-vector<Vec3i> NewHough::circle_houghpeaks(vector<vector<vector<double>>>& H, vector<int> range, int npeaks, int margin)
+vector<Vec3i> NewHough::circle_houghpeaks(vector<vector<vector<double>>> &H, vector<int> range, int npeaks, int margin)
 {
-	cout << "si este mensaje no se muestra, es qu elago paso!!!" << endl;
+	cout << "Picos de la captura!!" << endl;
+	cout <<"H.size() = " <<H.size() << endl;
+	cout << "H[0].size() = " << H[0].size() << endl;
+	cout << "H[0][0].size() = " << H[0][0].size() << endl;
+	cout << "H[0][0][0] = " << H[0][0][0] << endl;
+	cout << endl;
 
+	
 
 	// Find at max 10 candidates
 	vector<Vec3i> peaks;
 	// calcular valor maximo
 	double mv = 0;
-	for (int i = 0; i < H.size(); ++i)
+
+	for (int i = 0; i < H.size(); ++i) 
 	{
 		for (int j = 0; j < H[0].size(); ++j)
 		{
@@ -243,30 +257,39 @@ vector<Vec3i> NewHough::circle_houghpeaks(vector<vector<vector<double>>>& H, vec
 				if (H[i][j][k] > mv)
 				{
 					mv = H[i][j][k];
+					//cout << "mv = " << H[i][j][k] << endl;
 				}
 			}
 		}
 	}
+	
+	
 	// Retener unicamente el 50% de los valores maximos
 	// mv *= 0.5;
 
 	// Obtener los maximos aceptados
 	vector<Point4i> maxima;
+	
 	for (int k = 0; k < range.size(); ++k)
 	{
 		for (int j = 0; j < H[0].size(); ++j)
 		{
 			for (int i = 0; i < H.size(); ++k)
 			{
-				if (H[i][j][k] > 0 && H[i][j][k] >= mv)
+				//cout << "mv = "<< mv << endl;
+				//cout << "i = " << i << " J = "<< j << " k = " << k << endl;
+				//cout << "H[k][j][i] = " << H[k][j][i] << endl;
+				//maxima.push_back(Point4i(i, j, k, H[i][j][k]));
+				if (H[i][j][k] > 0 && H[i][j][k])
 				{
 					maxima.push_back(Point4i(i, j, k, H[i][j][k]));
 				}
+				cout << "Algo raro pasa aqui....dentro!!" << endl;
 			}
 		}
 	}
-	sort(maxima.begin(), maxima.end(), myfunction);
-
+	//sort(maxima.begin(), maxima.end(), myfunction);
+	
 	for (int i = 0; i < maxima.size(); ++i)
 	{
 		if (maxima[i].val >= 0.8 * maxima[0].val && peaks.size() < npeaks)
@@ -281,6 +304,7 @@ vector<Vec3i> NewHough::circle_houghpeaks(vector<vector<vector<double>>>& H, vec
 			break;
 		}
 	}
+	
 	return peaks;
 }
 

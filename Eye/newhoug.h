@@ -161,8 +161,8 @@ private:
 	vector<cv::Point2i> circlepoints(int radius);
 	vector<vector<vector<double>>> hAccumulator; // Hough circles accumulator
 
-	vector<vector<cv::Point2i>> templates;
-	vector<vector<cv::Point3i>> lut;
+	vector<vector<Point2i>> templates;
+	vector<vector<Point3i>> lut;
 	
 };
 #endif
