@@ -33,7 +33,7 @@ int Inicializar::detect()
 	//Trainer::MODEL gazeModel;
 	bool maxDensity = false;
 	bool binaryThresholding = false;
-	float k[] = { 0, 0, 0, 0, 0, 0, 0, 0, 1 };
+	float k[] = { 500, 0, 320, 0, 500, 240, 0, 0, 1 };
 	const Mat K(3, 3, CV_32F, (char*)k);
 	bool blink = false;
 	bool acquire = false;
@@ -98,7 +98,7 @@ int Inicializar::detect()
 	{
 		// El siguinete delay es para dar tiempo a que el dispositivo 
 		// termine de cargar
-		Sleep(2000);
+		//Sleep(2000);
 		while (true)
 		{
 			Mat frame;
@@ -167,7 +167,7 @@ int Inicializar::detect()
 				fa.EstimateHeadPose(X0, hp);
 				// Dibujamos los ejes de la posicion.
 				drawPose(frame, hp.rot, 50);
-				cout << ".";
+				//cout << ".";
 
 				// Posicion estimada de la cabeza [mm]
 				circle(frame, Point( (int)X0.at<float>(0,28), (int)X0.at<float>(1,28)), 2, Scalar(0, 0, 255), -1);
@@ -177,7 +177,7 @@ int Inicializar::detect()
 				Point3i pos = leftGaze.computeHeadposition(hp.rot, K, El, Er, H, D);
 				// Imprimir rotacion de la cabeza
 				hp.rot.at<float>(0, 0);
-				// Mostrar la posicion de la caveza
+				// Mostrar la posicion de la cabeza
 				putText( frame, "Head position [mm]: x = " + to_string(pos.x) + " Y = " + to_string(pos.y) + " z = " + to_string(pos.z),
 					Point(200, 70), FONT_HERSHEY_SIMPLEX, 0.3, 255 );
 				
@@ -215,8 +215,16 @@ int Inicializar::detect()
 				Mat leftEye = frameOrig(leftBoundRect);
 				Mat rightEye = frameOrig(rightBoundRect);
 
+				Mat temp;
+							
 				lEye = leftEye.clone();
-				rEye = rightEye.clone();
+				resize(lEye, temp, Size(3 * leftEye.cols, 3 * leftEye.rows));
+				imwrite("lEye.bmp", temp);
+
+				//rEye = rightEye.clone();
+				//resize(rEye, temp, Size(3 * leftEye.cols, 3 * leftEye.rows));
+				//imwrite("rEye", rEye);
+				
 
 				
 				// Estimar el centro de los ojos

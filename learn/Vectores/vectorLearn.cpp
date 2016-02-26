@@ -4,12 +4,29 @@ using namespace std;
 
 void Vectores::comenzar()
 {
-	string vector[4][4] = { {"1", "2", "3", "4"}, {"H", "O", "L", "A" } };	
-	for (int i = 0; i <= 3; i++)
+	vector<vector<vector<int>>> qwerty(4, vector<vector<int>>(3, vector<int>(2, 0) ) );
+
+	
+
+	for (int i = 0; i < qwerty.size(); i++)
 	{
-		for (int j = 0; j <= 3; j++)
+		for (int j = 0; j < qwerty[0].size(); j++)
 		{
-			cout << vector[i][j] << endl;
+			for (int k = 0; k < qwerty[0][0].size(); k++)
+			{
+				//cout << qwerty[i][j][k]<< endl;
+				qwerty[i][j][k] = k;
+			}
+		}
+	}
+	for (int i = 0; i < qwerty.size(); i++)
+	{
+		for (int j = 0; j < qwerty[0].size(); j++)
+		{
+			for (int k = 0; k < qwerty[0][0].size(); k++)
+			{
+				cout << qwerty[i][j][k] << endl;
+			}
 		}
 	}
 }

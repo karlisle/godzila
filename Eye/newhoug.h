@@ -6,7 +6,7 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-
+#include <string>
 // Cabeceras de la libreria de OpenCV
 #include <opencv2\core\core.hpp>
 #include <opencv2\imgproc\imgproc.hpp>
@@ -104,7 +104,7 @@ public:
 			radiuses[i] = i + 1;
 		for (int i = 0; i < 100; ++i)
 			templates[i] = circlepoints(radiuses[i]);
-		//lut = getLUT(radiuses);
+		lut = getLUT(radiuses);
 
 		//lutEllipse = getEllipseLUT(radiuses);
 	}
@@ -113,7 +113,7 @@ public:
 	* @param Circles radius
 	* @return LUT containing the set of template circle points compatible for each gradient direction
 	*/
-	vector<vector<cv::Point3i>> getLUT(vector<int> range);
+	vector<vector<Point3i>> getLUT(vector<int> range);
 
 	//vector<vector<TPoint5i>> getEllipseLUT(vector<int> range);
 
@@ -126,7 +126,7 @@ public:
 	* @param Maximum number of detectable circles
 	* @return Vector containing estimated circles centers and radius
 	*/
-	vector<cv::Vec3i> circle_hough(cv::Mat edges, vector<int> range, bool same = true, bool normalise = true, int npeaks = 10, cv::Mat GX = cv::Mat(), cv::Mat GY = cv::Mat(), cv::Mat mag = cv::Mat(), int options = QUANTIZED_GRADIENT);
+	vector<Vec3i> circle_hough(cv::Mat edges, vector<int> range, bool same = true, bool normalise = true, int npeaks = 10, cv::Mat GX = cv::Mat(), cv::Mat GY = cv::Mat(), cv::Mat mag = cv::Mat(), int options = QUANTIZED_GRADIENT);
 
 	/**
 	* @brief Method for returning the hough circles accumulator
@@ -136,7 +136,7 @@ public:
 		return hAccumulator;
 	}
 
-
+	vector<vector<Point3i>> lut;
 
 	//vector<EllipseHough> ellipse_hough(cv::Mat edges, cv::Mat bw, vector<int> range, cv::Mat GX, cv::Mat GY, cv::Mat mag, bool same = true, bool normalise = true, int npeaks = 10);
 
@@ -149,7 +149,7 @@ private:
 	* @param Hough accumulator margin (respect to the given edge map)
 	* @return Vector containing estimated circles centers and radius
 	*/
-	vector<Vec3i> circle_houghpeaks(vector<vector<vector<double>>>& H, vector<int> range, int npeaks, int margin);
+	//vector<Vec3i> circle_houghpeaks(vector<vector<vector<double>>>& H, vector<int> range, int npeaks, int margin);
 	
 	//vector<EllipseHough> ellipse_houghpeaks(vector<float>& acc, int nrh, int nch, vector<int> range, int npeaks, int margin);
 
@@ -158,11 +158,11 @@ private:
 	* @param Circle radius [mm]
 	* @return Vector containing circle points coordinates
 	*/
-	vector<cv::Point2i> circlepoints(int radius);
+	vector<Point2i> circlepoints(int radius);
 	vector<vector<vector<double>>> hAccumulator; // Hough circles accumulator
 
 	vector<vector<Point2i>> templates;
-	vector<vector<Point3i>> lut;
+	
 	
 };
 #endif

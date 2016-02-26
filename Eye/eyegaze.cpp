@@ -16,7 +16,9 @@ Vec3i EyeGaze::computeIrisCenter(Mat eye, Mat K, float depth, bool thresh, bool 
 		throw ImageSizeException();
 		cout << "ERROR: El frame no contine informacion!!" << endl;
 	}
+
 	cout << "SUCCES:Procediendo!!" << endl;
+
 	// Intentar ajustar la nitides de la imagen
 	GaussianBlur(eye, eqEye, Size(0, 0), 10);
 	addWeighted(eye, 1.5, eqEye, -0.5, 0, eye);
@@ -78,14 +80,30 @@ Vec3i EyeGaze::computeIrisCenter(Mat eye, Mat K, float depth, bool thresh, bool 
 	// con R = radio [m], D = profundidad (m) y fx y fy = longitud focal [pxl], r = radio.
 
 	// Encontrar el ajuste preciso del circulo con el diamtro del Iris
-
+	//cout << K.size() << endl;
+	//cout << "K at (0,0) = " << K << endl;
+	
+	//cout << "K at (0,0) = " << K.at<float>(0, 0) << endl;
 	float  multiplier = sqrt(K.at<float>(0, 0) * K.at<float>(0, 0) + K.at<float>(1, 1) * K.at<float>(1, 1));
+	//cout << "Multiplier = " << multiplier << endl;
+
 	int minRadPxl = 0.8 * MIN_IRIS_RADIUS * multiplier / depth;
+	//cout << "MinRad = " << minRadPxl << endl;
+
 	int maxRadPxl = MAX_IRIS_RADIUS * multiplier / depth;
+	//cout << "MaxRad = " << maxRadPxl << endl;
+
 	range = vector<int>(min(10, maxRadPxl - minRadPxl + 1));
+	//for (int i = 0; i < range.size(); ++i)
+	//{
+	//	cout << "range["<< i <<"] = " << range[i] << endl;
+	//}
+
 	int step = 1;
+
 	if (range.size() == 10)
 	{
+
 		step = floor((maxRadPxl + minRadPxl + 1) / 10);
 	}
 	for (int i = 0; i < range.size(); ++i)
@@ -96,8 +114,46 @@ Vec3i EyeGaze::computeIrisCenter(Mat eye, Mat K, float depth, bool thresh, bool 
 	// A
 	Vec3i circle;
 	//Sleep(2000);
-	vector<Vec3i> circles = hough.circle_hough(edges, range, true, true, 100, GX, GY, mag, options);
-	
+	//vector<Vec3i> circles = hough.circle_hough(edges, range, true, true, 100, GX, GY, mag, options);
+	//vector<int> bkjkd(6, 2);
+	//vector<vector<Point3i>> valut = hough.getLUT(K);
+	//cout << "Tamaño de valut =" << valut.size() << endl;
+	//cout << valut[0][0].x << endl;
+	/*
+	if (circles.size() > 0)
+	{
+		if (maxD)
+		{
+			Mat intImage;
+			vector<unsigned char> white(eqEye.rows * eqEye.cols, 255);
+			Mat cplImage = Mat(eqEye.rows, eqEye.cols, CV_8U, white.data()) - eqEye;
+			integral(cplImage, intImage);
+			float maxDens;
+			int idx = 0;
+			for (int k = 0; k < circles.size(); ++k)
+			{
+				int minX = floor(max<float>(1, circles[k][1] - circles[k][2]));
+				int minY = floor(max<float>(1, circles[k][0] - circles[k][2]));
+				int maxX = floor(min<float>(eqEye.cols-1, circles[k][1] + circles[k][2]));
+				int maxY = floor(min<float>(eqEye.rows - 1, circles[k][0] + circles[k][2]));
+				float D = intImage.at<int>(maxY, maxX) + intImage.at<int>(minY, minX) - intImage.at<int>(minY, maxX) - intImage.at<int>(maxY, minX);
+
+				D = D / ((maxX - minX) * (maxY - minY )* 255);
+				if (D > maxDens)
+				{
+					maxDens = D;
+					idx = k;
+				}
+			}
+			circle = circles[idx];
+		}
+		else
+		{
+			circle = circles[0];
+		}
+	}
+	return Vec3i(circle[0], circle[1], circle[2]);
+	*/
 }
 
 Point3i EyeGaze::computeHeadposition(Mat R, Mat K, Point El, Point Er, int H, int D)

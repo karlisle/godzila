@@ -74,7 +74,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\include;$(OPENCV_DIR)\..\..\include</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\kharl\Documents\Git\godzila\Eye\Libraries\Intraface\lib;$(OPENCV_DIR)\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_ts300d.lib;opencv_world300d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>IntraFaceDLL-x86.lib %(AdditionalOptions)</AdditionalOptions>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -110,11 +116,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="captureFrame.cpp" />
+    <ClCompile Include="getEye.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="vectorLearn.cpp" />
+    <ClCompile Include="hough.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="vectorLearn.h" />
+    <ClInclude Include="captureFrame.h" />
+    <ClInclude Include="getEye.h" />
+    <ClInclude Include="hough.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,6 +9,7 @@ vector<Vec3i> NewHough::circle_hough(Mat edges, vector<int> range, bool same, bo
 	// Obtener las coordenadas de los ejes
 	cout << "Hola desde New Hough!!" << endl;
 	vector<Point> idx;
+	vector<vector<Point3i>> lut;
 	unsigned char *rowPtr;
 
 	for (int i = 0; i < edges.rows; ++i)
@@ -18,7 +19,7 @@ vector<Vec3i> NewHough::circle_hough(Mat edges, vector<int> range, bool same, bo
 		{
 			if (rowPtr[j] > 0)
 			{
-				cout << "Ya pasamos de aqui!!" << endl;
+				//cout << "Ya pasamos de aqui!!" << endl;
 				idx.push_back(Point2d(i, j));
 
 			}
@@ -53,7 +54,7 @@ vector<Vec3i> NewHough::circle_hough(Mat edges, vector<int> range, bool same, bo
 	int margin = ceil(*(max_element(range.begin(), range.end()))) + 2;
 	int nrh = nr + 2 * margin + 1;        // increase size of accumulator
 	int nch = nc + 2 * margin + 1;
-	hAccumulator = vector<vector<vector<double>>>(nrh, vector<vector<double>>(nch, vector<double>(nradii, 0)));
+	hAccumulator = vector< vector< vector<double>>>(nrh, vector< vector< double>>(nch, vector<double>(nradii, 0)));
 	double maxMag, minMag;
 	minMaxLoc(mag, &minMag, &maxMag);
 
@@ -123,30 +124,28 @@ vector<Vec3i> NewHough::circle_hough(Mat edges, vector<int> range, bool same, bo
 		}
 	}
 	
+	
 	if (options & OPTIONS::QUANTIZED_GRADIENT)
 	{
 		cout << "QUANTIZED_GRADIENT" << endl;
-		
-		
-		
 		for (int f = 0; f < idx.size(); ++f)
 		{
-			cout << "Primer for" << endl;
+			//cout << "Primer for" << endl;
 			for (int r = 0; r < range.size(); ++r)
 			{
-				cout << "Segundo for" << endl;
-				cout << (8 * (range[r] - 1) + qGrad[f]) << endl;
-				vector<Point3i> points;
 				
+				vector<Point3i>& points = lut[8 * (range[r] + qGrad[f])];
+				cout <<"Points Size()" << points.size() << endl;
 				for (int i = 0; i < points.size(); ++i)
 				{
-					cout << "Tercer for" << endl;
+					//cout << "Tercer for" << endl;
 					if (options & OPTIONS::EDGE_WEIGHTING)
 					{
 						if ((points[i].x + idx[f].x) > 0 && (points[i].y + idx[f].y) > 0 && (points[i].x + idx[f].x) < edges.rows && (points[i].y + idx[f].y) < edges.cols)
 						{
 							hAccumulator[points[i].x + idx[f].x + margin][points[i].y + idx[f].y + margin][r] += mag.at<float>(points[i].x + idx[f].x, points[i].y + idx[f].y) * 255 / maxMag;
 						}
+						else;
 					}
 					else
 					{
@@ -157,6 +156,7 @@ vector<Vec3i> NewHough::circle_hough(Mat edges, vector<int> range, bool same, bo
 			}
 		}
 	}
+	
 	
 
 	if (same)
@@ -225,24 +225,33 @@ vector<Vec3i> NewHough::circle_hough(Mat edges, vector<int> range, bool same, bo
 
 	}
 
-	cout << "Llamando a circle_houghpeaks...." << endl;
-	return circle_houghpeaks(hAccumulator, range, npeaks, margin);
+	//cout << "Llamando a circle_houghpeaks...." << endl;
 	
+	vector<Vec3i> peaks;
+	vector<vector<vector<double>>> vectorRaro = hAccumulator;
+	for (int i = 0; i < vectorRaro.size(); i++)
+	{
+		for (int j = 0; j < vectorRaro[0].size(); j++)
+		{
+			for (int k = 0; k < vectorRaro[0][0].size(); k++)
+			{
+				//cout << vectorRaro[i][j][k] << endl;
+				peaks.push_back(Vec3i(i, j, k));
 
+			}
+		}
+	}
+	
+	return peaks;
 }
 
-
+/*
 vector<Vec3i> NewHough::circle_houghpeaks(vector<vector<vector<double>>> &H, vector<int> range, int npeaks, int margin)
 {
-	cout << "Picos de la captura!!" << endl;
-	cout <<"H.size() = " <<H.size() << endl;
-	cout << "H[0].size() = " << H[0].size() << endl;
-	cout << "H[0][0].size() = " << H[0][0].size() << endl;
-	cout << "H[0][0][0] = " << H[0][0][0] << endl;
-	cout << endl;
+
 
 	
-
+	/*
 	// Find at max 10 candidates
 	vector<Vec3i> peaks;
 	// calcular valor maximo
@@ -305,8 +314,12 @@ vector<Vec3i> NewHough::circle_houghpeaks(vector<vector<vector<double>>> &H, vec
 		}
 	}
 	
-	return peaks;
+	return;
+
 }
+*/
+
+
 
 // circlepoints
 vector<Point2i> NewHough::circlepoints(int r) {

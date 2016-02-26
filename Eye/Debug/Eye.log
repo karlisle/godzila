@@ -1,44 +1,63 @@
-﻿  newhoug.cpp
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(36): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(41): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(45): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(53): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(68): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(70): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(94): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(98): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(111): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(111): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(117): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(132): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(135): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(141): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(170): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(179): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(181): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(190): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(201): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(203): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(215): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(217): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(251): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(253): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(255): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(273): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(275): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(277): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(293): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(295): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(314): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(323): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(343): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(346): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(351): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(354): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(358): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(369): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(381): warning C4018: '<': signed/unsigned mismatch
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(382): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\kharl\documents\git\godzila\eye\newhoug.cpp(383): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+﻿  inicializar.cpp
+c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\facealignment.h(80): warning C4251: 'INTRAFACE::FaceAlignment::m_DR': class 'std::vector<cv::Mat,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=cv::Mat
+          ]
+c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\facealignment.h(80): warning C4251: 'INTRAFACE::FaceAlignment::m_Db': class 'std::vector<cv::Mat,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=cv::Mat
+          ]
+c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\facealignment.h(80): warning C4251: 'INTRAFACE::FaceAlignment::m_TR': class 'std::vector<cv::Mat,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=cv::Mat
+          ]
+c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\facealignment.h(80): warning C4251: 'INTRAFACE::FaceAlignment::m_Tb': class 'std::vector<cv::Mat,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=cv::Mat
+          ]
+c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\facealignment.h(81): warning C4251: 'INTRAFACE::FaceAlignment::m_winsize': class 'std::vector<int,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=int
+          ]
+c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\facealignment.h(82): warning C4251: 'INTRAFACE::FaceAlignment::m_flags': class 'std::vector<bool,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=bool
+          ]
+c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\facealignment.h(83): warning C4251: 'INTRAFACE::FaceAlignment::m_w': class 'cv::Mat' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+  c:\opencv\build\include\opencv2\core\mat.hpp(731): note: see declaration of 'cv::Mat'
+c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\facealignment.h(84): warning C4251: 'INTRAFACE::FaceAlignment::m_meanShape2D': class 'cv::Mat' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+  c:\opencv\build\include\opencv2\core\mat.hpp(731): note: see declaration of 'cv::Mat'
+c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\facealignment.h(86): warning C4251: 'INTRAFACE::FaceAlignment::m_cropROI': class 'cv::Rect_<int>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\facealignment.h(87): warning C4251: 'INTRAFACE::FaceAlignment::m_offset': class 'cv::Rect_<double>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+c:\users\kharl\documents\git\godzila\eye\newhoug.h(14): warning C4005: 'PI': macro redefinition
+  c:\users\kharl\documents\git\godzila\eye\libraries\intraface\include\intraface\marcos.h(39): note: see previous definition of 'PI'
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(20): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(92): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(161): warning C4018: '<': signed/unsigned mismatch
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(175): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(176): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(187): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(188): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(189): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(190): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(191): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(192): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(195): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(196): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(197): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(198): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(199): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(200): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(234): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\inicializar.cpp(241): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Eye.vcxproj -> C:\Users\kharl\Documents\Git\godzila\Eye\Debug\Eye.exe
   Eye.vcxproj -> C:\Users\kharl\Documents\Git\godzila\Eye\Debug\Eye.pdb (Partial PDB)
