@@ -13,23 +13,18 @@
 #include <opencv2\imgcodecs\imgcodecs.hpp>
 
 
+using namespace std;
+using namespace cv;
 
 class NewHough {
 public:
 	NewHough() {
 
 	}
-	Mat src;
-	Mat src_gray;
-	int thresh = 100;
-	int max_thresh = 255;
 	
-
 	void hough_lines();
 	void hough_linesP();
-	void hough_circle();
-	void find_contours();
-	void find(int, void*);
+	void hough_circle(cv::Mat eye);
 private:
 
 };

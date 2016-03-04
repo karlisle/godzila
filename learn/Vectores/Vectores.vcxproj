@@ -117,13 +117,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="captureFrame.cpp" />
+    <ClCompile Include="findEyeCenter.cpp" />
     <ClCompile Include="getEye.cpp" />
+    <ClCompile Include="helpers.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="hough.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="captureFrame.h" />
+    <ClInclude Include="constantes.h" />
+    <ClInclude Include="findEyeCenter.h" />
     <ClInclude Include="getEye.h" />
+    <ClInclude Include="helpers.h" />
     <ClInclude Include="hough.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,27 +3,36 @@
 #define CAPTUREFRAME_H
 
 
+// Cabeceras de la libreria estandar
 #include <iostream>
+#include <algorithm>
 #include <string>
-#include <math.h>
-#include <iostream>
+#include <vector>
+#include <time.h>
 #include <Windows.h>
+//Cabeceras de inclusion de OpenCV
+//(verificar la ruta del sistema, o en su defecto local)
+// en las propiedades del proyecto
+#include <opencv2/core/core.hpp>
+#include <opencv2/objdetect/objdetect.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+// Librerias de IntraFace
+#include <intraface\FaceAlignment.h>
+#include <intraface\XXDescriptor.h>
+// Cabeceras locales
+#include "findEyeCenter.h"
 
-
-
-#include <opencv2\core\core.hpp>
-#include <opencv2\opencv.hpp>
-#include <opencv2\highgui\highgui.hpp>
-#include <opencv2\imgcodecs\imgcodecs.hpp>
-
-#include "hough.h"
 
 class CaptureFrame {
 public:
 	CaptureFrame() {
 	}
-	void capture();
-	void hough_circle(cv::Mat image);
+	
+	FindEyeCenter centro;
+
+	void detect();
+	
 
 private:
 
