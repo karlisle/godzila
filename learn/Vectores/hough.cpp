@@ -83,29 +83,34 @@ void NewHough::hough_linesP()
 	waitKey();
 }
 
-void NewHough::hough_circle()
+void NewHough::hough_circle(Mat eye)
 {
 	Mat img;
-	img = imread("lEye.bmp", CV_LOAD_IMAGE_COLOR);
+	img = eye.clone();
 	Mat dest = img.clone();
-	//resize(img, dest, Size(), 4, 4);
-	//imwrite("imgResize.bmp", dest);
-	//img = frame;
+
+	/*
+	resize(img, dest, Size(), 4, 4);
+	imwrite("imgResize.bmp", dest);
+	img = frame;
+	
 	
 	Mat gray;
 	Mat bordes;
 	Mat binary;
 	cvtColor(dest, gray, COLOR_BGR2GRAY);
 	
+	
 	binary = gray > 128;
 	//GaussianBlur(binary, binary, Size(5, 5), 1, 1);
 	Canny(binary, bordes, 5, 60, 3);
 	imwrite("bordeOjo.bmp", bordes);
 	imshow("Frame_bordes", binary);
+	*/
 
 	vector<Vec3f> circles;
 
-	HoughCircles(binary, circles, HOUGH_GRADIENT, 1, gray.rows/10, 200, 100, 0, 0 );
+	HoughCircles(img, circles, HOUGH_GRADIENT, 1, img.rows/10, 200, 100, 0, 0 );
 	if (!circles.empty())
 	{
 		cout << "Circulos detectados!" << endl;
@@ -116,47 +121,13 @@ void NewHough::hough_circle()
 			circle(dest, center, 3, Scalar(0, 255, 0), -1, 8, 0);
 			circle(dest, center, radius, Scalar(0, 0, 255), 3, 8, 0);
 		}
-		//imshow("Cosos locos", dest);
+		imshow("Cosos locos", dest);
 	}
 	else
 	{
 		cerr << "No hay circulos " << endl;
-		//("Img", img);
+		("Img", img);
 	}
 	
-	
-	
-
-
-	waitKey();
-}
-
-void NewHough::find_contours()
-{
-	cout << "Encontrar contornos en la imagen" << endl;
-	
-
-	src = imread("lEye.bmp", CV_LOAD_IMAGE_COLOR);
-	cvtColor(src, src_gray, COLOR_BGR2BGRA);
-	blur(src_gray, src_gray, Size(3, 3));
-	namedWindow("Source", WINDOW_AUTOSIZE);
-	imshow("Source", src);
-
-	createTrackbar("Canny thresh: ", "Source", &thresh, max_thresh, find);
-	find(0, 0);
-	
-	waitKey();
-}
-
-void NewHough::find(int, void*)
-{
-	RNG rng(12345);
-	Mat canny_output;
-	vector<vector<Point>> contours;
-	vector<Vec4i> hierarchy;
-
-	Canny(src_gray, canny_output, thresh, thresh *2, 3);
-	findContours(canny_output, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 255));
-	Mat 
-	drawContours()
+	return;
 }
