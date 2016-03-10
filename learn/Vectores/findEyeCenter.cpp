@@ -138,70 +138,14 @@ Point FindEyeCenter::eyeCenter(Mat lEye, Mat face)
 			testPossibleCentersFormula(x, y, weight, gX, gY, outSum);
 		}
 	}
-	// scale all the values down, basically averaging them
-	double numGradients = (weight.rows*weight.cols);
-	cv::Mat out;
-	outSum.convertTo(out, CV_32F, 1.0 / numGradients);
-	//imshow(debugWindow,out);
-	//-- Find the maximum point
-	cv::Point maxP;
-	double maxVal;
-	cv::minMaxLoc(out, NULL, &maxVal, NULL, &maxP);
-	//-- Flood fill the edges
-	if (kEnablePostProcess) {
-		cv::Mat floodClone;
-		//double floodThresh = computeDynamicThreshold(out, 1.5);
-		double floodThresh = maxVal * kPostProcessThreshold;
-		cv::threshold(out, floodClone, floodThresh, 0.0f, cv::THRESH_TOZERO);
-		if (kPlotVectorField) {
-			//plotVecField(gradientX, gradientY, floodClone);
-			imwrite("eyeFrame.png", eyeROIUnscaled);
-		}
-		cv::Mat mask = floodKillEdges(floodClone);
-		//imshow(debugWindow + " Mask",mask);
-		//imshow(debugWindow,out);
-		// redo max
-		cv::minMaxLoc(out, NULL, &maxVal, NULL, &maxP, mask);
-	}
-	
-	return unscalePoint(maxP, lEye);
+	return 0;
 
 
 }
 #pragma mark Postprocessing
 
-bool floodShouldPushPoint(const cv::Point &np, const cv::Mat &mat) {
-	return inMat(np, mat.rows, mat.cols);
-}
 
-// returns a mask
-cv::Mat floodKillEdges(cv::Mat &mat) {
-	rectangle(mat, cv::Rect(0, 0, mat.cols, mat.rows), 255);
 
-	cv::Mat mask(mat.rows, mat.cols, CV_8U, 255);
-	std::queue<cv::Point> toDo;
-	toDo.push(cv::Point(0, 0));
-	while (!toDo.empty()) {
-		cv::Point p = toDo.front();
-		toDo.pop();
-		if (mat.at<float>(p) == 0.0f) {
-			continue;
-		}
-		// add in every direction
-		cv::Point np(p.x + 1, p.y); // right
-		if (floodShouldPushPoint(np, mat)) toDo.push(np);
-		np.x = p.x - 1; np.y = p.y; // left
-		if (floodShouldPushPoint(np, mat)) toDo.push(np);
-		np.x = p.x; np.y = p.y + 1; // down
-		if (floodShouldPushPoint(np, mat)) toDo.push(np);
-		np.x = p.x; np.y = p.y - 1; // up
-		if (floodShouldPushPoint(np, mat)) toDo.push(np);
-		// kill it
-		mat.at<float>(p) = 0.0f;
-		mask.at<uchar>(p) = 0;
-	}
-	return mask;
-}
 
 
 
