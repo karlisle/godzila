@@ -77,9 +77,9 @@ void CaptureFrame::detect()
 	
 
 	VideoCapture capture;
-	capture.open("videoeyes.avi");
+	//capture.open("videoeyes.avi");
 	//capture.open("eyes_two.avi");
-	//capture.open(0);
+	capture.open(0);
 	Sleep(1000);
 	Mat fOrig;
 	Mat lEye;
@@ -91,10 +91,11 @@ void CaptureFrame::detect()
 	Vec3i lCircle;
 	Vec3i rCircle;
 	// Creamos unas ventanas
-	namedWindow("Gaze", CV_WINDOW_NORMAL);
-	namedWindow("LeftEye", CV_WINDOW_AUTOSIZE);
+	//namedWindow("Gaze", CV_WINDOW_NORMAL);
+	//namedWindow("LeftEye", CV_WINDOW_AUTOSIZE);
 	//namedWindow("RightEye", CV_WINDOW_AUTOSIZE);
 	int key = 0;
+	int intent = 0;
 	bool isDetect = true;
 	float score, notFace = 0.3;
 	Mat X, X0;
@@ -131,7 +132,8 @@ void CaptureFrame::detect()
 				// y se contia a la siguiente instruccion
 				if (faces.empty())
 				{
-					imshow("Gaze", frame);
+					//imshow("Gaze", frame);
+					prepare.display(frame, faces);
 					key = waitKey(5);
 					continue;
 				}
@@ -179,13 +181,14 @@ void CaptureFrame::detect()
 				//cout << ".";
 
 				// Posicion estimada de la cabeza [mm]
+				/*
 				for (int i = 19; i <= 30; i++)
 				{
 					circle(frame, Point((int)X0.at<float>(0, i), (int)X0.at<float>(1, i)), 2, Scalar(255, 255, 0), -1);
-
-					
 				}
-				
+				*/
+				circle(frame, Point((int)X0.at<float>(0, 19), (int)X0.at<float>(1, 19)), 2, Scalar(255, 255, 0), -1);
+				circle(frame, Point((int)X0.at<float>(0, 28), (int)X0.at<float>(1, 28)), 2, Scalar(255, 255, 0), -1);
 
 				Point El(X0.at<float>(0, 28), X0.at<float>(1, 28));
 				Point Er(X0.at<float>(0, 19), X0.at<float>(1, 19));
@@ -219,17 +222,19 @@ void CaptureFrame::detect()
 				Mat leftEye = frameOrig(leftBoundRect);
 				Mat rightEye = frameOrig(rightBoundRect);
 
-				Mat temp;
-				Mat gray;
-				Mat eqEye;
-				lEye = leftEye.clone();
-				resize(lEye, temp, Size(2 * leftEye.cols, 2 * leftEye.rows));
-				GaussianBlur(temp, eqEye, Size(9, 7), 3);
-				
-				// Enviamos la imagen  del ojo para procesar.
-				Point leftPupil = centro.eyeCenter(lEye, frame);
+				//Mat temp;
+				//Mat gray;
+				//Mat eqEye;
+				//lEye = leftEye.clone();
+				//resize(lEye, temp, Size(2 * leftEye.cols, 2 * leftEye.rows));
+				//GaussianBlur(temp, eqEye, Size(9, 7), 3);
+				/*NT:Desarrollo*/
+				//-- Enviamos la imagen  del ojo para procesar.
+				//-- Aqui puedo enviar las regiones de interes directamente, pero por ahora 
+				//-- intentare hacerlo por el otro metodo, si no funciona las envio directamente
+				prepare.display(frame, faces);
 				// Mostramos la imagen completa del rostro con los ojos punteados.
-				imshow("Gaze", frame);				
+				//imshow("Gaze", frame);				
 				
 			}
 
@@ -241,6 +246,11 @@ void CaptureFrame::detect()
 			}
 
 		}
+	}
+	else
+	{
+		cerr << "No se puede cargar el dispositivo de captura" << endl;
+		cerr << "Asegurese de que el dispositivo esta conectado, \n e intentelo nuevamente." << endl;			
 	}
 	cvDestroyAllWindows();
 	capture.release();
