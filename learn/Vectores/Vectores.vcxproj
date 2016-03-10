@@ -118,18 +118,22 @@
   <ItemGroup>
     <ClCompile Include="captureFrame.cpp" />
     <ClCompile Include="findEyeCenter.cpp" />
+    <ClCompile Include="findEyeCorner.cpp" />
     <ClCompile Include="getEye.cpp" />
     <ClCompile Include="helpers.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="hough.cpp" />
+    <ClCompile Include="prepare.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="captureFrame.h" />
     <ClInclude Include="constantes.h" />
     <ClInclude Include="findEyeCenter.h" />
+    <ClInclude Include="findEyeCorner.h" />
     <ClInclude Include="getEye.h" />
     <ClInclude Include="helpers.h" />
     <ClInclude Include="hough.h" />
+    <ClInclude Include="prepare.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

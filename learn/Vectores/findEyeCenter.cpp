@@ -4,24 +4,23 @@
 #include "constantes.h"
 
 using namespace std;
-using namespace cv;
 
 #pragma mark Helpers
 
-Point unscalePoint(Point p, Rect origSize) {
+cv::Point unscalePoint(cv::Point p, cv::Rect origSize) {
 	float ratio = (((float)kFastEyeWidth) / origSize.width);
 	int x = round(p.x / ratio);
 	int y = round(p.y / ratio);
-	return Point(x, y);
+	return cv::Point(x, y);
 }
 
 void scaleToFastSize(const cv::Mat &src, cv::Mat &dst) {
 	cv::resize(src, dst, cv::Size(kFastEyeWidth, (((float)kFastEyeWidth) / src.cols) * src.rows));
 }
 
-Mat computeMatXGradient(const Mat &mat)
+cv::Mat computeMatXGradient(const cv::Mat &mat)
 {
-	Mat out(mat.rows, mat.cols, CV_64F);
+	cv::Mat out(mat.rows, mat.cols, CV_64F);
 
 	for (int y = 0; y < mat.rows; ++y)
 	{
@@ -67,29 +66,28 @@ void testPossibleCentersFormula(int x, int y, const cv::Mat &weight, double gx, 
 	}
 }
 
-Point FindEyeCenter::eyeCenter(Mat lEye, Mat face) 
+cv::Point FindEyeCenter::eyeCenter(cv::Mat face, cv::Rect eye, std::string debugWindow)
 {
 	/* TODO: Code
 	* Hacemos cosas locas con la imagen para facilitar el procesamiento
 	*/
 	//
-	cout << "Encontrar el centro del ojo" << endl;
+	//cout << "Encontrar el centro del ojo" << endl;
 
-	Mat eyeROIUnscaled = lEye.clone();
-	Mat eyeROI;
-	Mat dest;
-	Mat clEye = lEye.clone();
-
-	imshow("Ojo izquierdo", lEye);
-
-	scaleToFastSize(clEye, eyeROI);
+	cv::Mat eyeROIUnscaled = face(eye);
+	cv::Mat eyeROI;
+	scaleToFastSize(eyeROIUnscaled, eyeROI);
+	//-- Creamos una ventana
+	cv::namedWindow(debugWindow, CV_WINDOW_NORMAL);
+	// dibujar la region del ojo
+	rectangle(face, eye, 1234);
 	// Encontrar el gradiente
-	Mat gradientX = computeMatXGradient(eyeROI);
-	Mat gradientY = computeMatXGradient(eyeROI.t()).t();
+	cv::Mat gradientX = computeMatXGradient(eyeROI);
+	cv::Mat gradientY = computeMatXGradient(eyeROI.t()).t();
 	// Normalizar y umbralizar el gradiente
 	// Calcular rodas las magnitudes
 	Helper help;
-	Mat mags = help.matrixMagnitude(gradientX, gradientY);
+	cv::Mat mags = help.matrixMagnitude(gradientX, gradientY);
 	// Calcular el umbral
 	double gradientThresh = help.computeDynamicThreshold(mags, kGradientThreshold);
 	for (int y = 0; y < eyeROI.rows; ++y) {
@@ -108,12 +106,12 @@ Point FindEyeCenter::eyeCenter(Mat lEye, Mat face)
 			}
 		}
 	}
-	namedWindow("Cosos", WINDOW_NORMAL);
-	imshow("Cosos" , gradientX);
+	
+	//cv::imshow(debugWindow , gradientX);
 
 	//-- Create a blurred and inverted image for weighting 
-	Mat weight;
-	GaussianBlur(eyeROI, weight, Size(kWeightBlurSize, kWeightBlurSize), 0, 0);
+	cv::Mat weight;
+	GaussianBlur(eyeROI, weight, cv::Size(kWeightBlurSize, kWeightBlurSize), 0, 0);
 	for (int y = 0; y < weight.rows; ++y)
 	{
 		unsigned char *row = weight.ptr<unsigned char>(y);
@@ -122,9 +120,12 @@ Point FindEyeCenter::eyeCenter(Mat lEye, Mat face)
 			row[x] = (255 - row[x]);
 		}
 	}
+	
+	cv::imshow(debugWindow, weight);
 
-	Mat  outSum = Mat::zeros(eyeROI.rows, eyeROI.cols, CV_64F);
-	printf("Eye Size: %ix%i\n", outSum.cols, outSum.rows);
+	cv::Mat  outSum = cv::Mat::zeros(eyeROI.rows, eyeROI.cols, CV_64F);
+	
+	//printf("Eye Size: %ix%i\n", outSum.cols, outSum.rows);
 	for (int y = 0; y < weight.rows; ++y)
 	{
 		const double *Xr = gradientX.ptr<double>(y), *Yr = gradientY.ptr<double>(y);
@@ -138,70 +139,69 @@ Point FindEyeCenter::eyeCenter(Mat lEye, Mat face)
 			testPossibleCentersFormula(x, y, weight, gX, gY, outSum);
 		}
 	}
-	// scale all the values down, basically averaging them
-	double numGradients = (weight.rows*weight.cols);
+	//--
+	double numGradients = (weight.rows * weight.cols);
 	cv::Mat out;
-	outSum.convertTo(out, CV_32F, 1.0 / numGradients);
-	//imshow(debugWindow,out);
-	//-- Find the maximum point
+	outSum.convertTo(out, CV_32F, 1.0/numGradients);
+	//-- Encontrar el punto maximo
 	cv::Point maxP;
 	double maxVal;
 	cv::minMaxLoc(out, NULL, &maxVal, NULL, &maxP);
-	//-- Flood fill the edges
-	if (kEnablePostProcess) {
+	//-- Rellenar los bordes
+	if (kEnablePostProcess)
+	{
 		cv::Mat floodClone;
-		//double floodThresh = computeDynamicThreshold(out, 1.5);
 		double floodThresh = maxVal * kPostProcessThreshold;
 		cv::threshold(out, floodClone, floodThresh, 0.0f, cv::THRESH_TOZERO);
-		if (kPlotVectorField) {
-			//plotVecField(gradientX, gradientY, floodClone);
-			imwrite("eyeFrame.png", eyeROIUnscaled);
+		//cv::namedWindow("floodClone", CV_WINDOW_NORMAL);
+		//cv::imshow("floodClone", floodClone);
+		if (kPlotVectorField)
+		{
+			cv::imwrite("eyeFrame.bmp", eyeROIUnscaled);
 		}
-		cv::Mat mask = floodKillEdges(floodClone);
-		//imshow(debugWindow + " Mask",mask);
-		//imshow(debugWindow,out);
-		// redo max
-		cv::minMaxLoc(out, NULL, &maxVal, NULL, &maxP, mask);
+		//cv::Mat mask = floodKilledges(floodClone);
 	}
-	
-	return unscalePoint(maxP, lEye);
+	return 0;
 
 
 }
 #pragma mark Postprocessing
 
-bool floodShouldPushPoint(const cv::Point &np, const cv::Mat &mat) {
-	return inMat(np, mat.rows, mat.cols);
+bool floodShouldpushPoint(const cv::Point &np, const cv::Mat &mat)
+{
+	Helper help;
+	return  help.inMat(np, mat.rows, mat.cols);
 }
-
-// returns a mask
-cv::Mat floodKillEdges(cv::Mat &mat) {
+cv::Mat FindEyeCenter::floodKilledges(cv::Mat &mat)
+{
 	rectangle(mat, cv::Rect(0, 0, mat.cols, mat.rows), 255);
-
 	cv::Mat mask(mat.rows, mat.cols, CV_8U, 255);
-	std::queue<cv::Point> toDo;
+	queue<cv::Point> toDo;
 	toDo.push(cv::Point(0, 0));
-	while (!toDo.empty()) {
+	while (!toDo.empty())
+	{
 		cv::Point p = toDo.front();
 		toDo.pop();
-		if (mat.at<float>(p) == 0.0f) {
+		if (mat.at<float>(p) == 0.0f)
+		{
 			continue;
 		}
-		// add in every direction
-		cv::Point np(p.x + 1, p.y); // right
-		if (floodShouldPushPoint(np, mat)) toDo.push(np);
-		np.x = p.x - 1; np.y = p.y; // left
-		if (floodShouldPushPoint(np, mat)) toDo.push(np);
-		np.x = p.x; np.y = p.y + 1; // down
-		if (floodShouldPushPoint(np, mat)) toDo.push(np);
-		np.x = p.x; np.y = p.y - 1; // up
-		if (floodShouldPushPoint(np, mat)) toDo.push(np);
-		// kill it
-		mat.at<float>(p) = 0.0f;
-		mask.at<uchar>(p) = 0;
+		//-- agrgar las posiciones
+		cv::Point np(p.x + 1, p.y); // derecha
+		if (floodShouldpushPoint(np, mat))
+		{
+			toDo.push(np);
+		}
+
+		{
+
+		}
 	}
 	return mask;
 }
+
+
+
 
 
 

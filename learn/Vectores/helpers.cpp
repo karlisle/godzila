@@ -2,9 +2,9 @@
 #include "helpers.h"
 #include "constantes.h"
 
-Mat Helper::matrixMagnitude(const Mat &matX, const Mat &matY)
+cv::Mat Helper::matrixMagnitude(const cv::Mat &matX, const cv::Mat &matY)
 {
-	Mat mags(matX.rows, matX.cols, CV_64F);
+	cv::Mat mags(matX.rows, matX.cols, CV_64F);
 
 	for (int y = 0; y < matX.rows; ++y) {
 		const double *Xr = matX.ptr<double>(y), *Yr = matY.ptr<double>(y);
@@ -18,10 +18,15 @@ Mat Helper::matrixMagnitude(const Mat &matX, const Mat &matY)
 	return mags;
 }
 
-double Helper::computeDynamicThreshold(const Mat &mat, double stdDevFactor) {
+double Helper::computeDynamicThreshold(const cv::Mat &mat, double stdDevFactor) {
 	cv::Scalar stdMagnGrad, meanMagnGrad;
 	cv::meanStdDev(mat, meanMagnGrad, stdMagnGrad);
 	double stdDev = stdMagnGrad[0] / sqrt(mat.rows*mat.cols);
 	return stdDevFactor * stdDev + meanMagnGrad[0];
+}
+
+bool Helper::inMat(cv::Point p, int rows, int cols)
+{
+	return p.x >= 0 && p.x < cols && p.y >= 0 && p.y < rows;
 }
 
