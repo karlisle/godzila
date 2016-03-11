@@ -16,7 +16,7 @@ const float kSmoothFaceFactor = 0.005;
 
 // Algorithm Parameters
 const int kFastEyeWidth = 50;
-const int kWeightBlurSize = 5;
+const int kWeightBlurSize = 3;
 const bool kEnableWeight = true;
 const float kWeightDivisor = 1.0;
 const double kGradientThreshold = 50.0;

@@ -159,9 +159,13 @@ cv::Point FindEyeCenter::eyeCenter(cv::Mat face, cv::Rect eye, std::string debug
 		{
 			cv::imwrite("eyeFrame.bmp", eyeROIUnscaled);
 		}
-		//cv::Mat mask = floodKilledges(floodClone);
+		cv::Mat mask = floodKilledges(floodClone);
+		//cv::imshow(debugWindow + "Mask", mask);
+		//cv::namedWindow("Salida", CV_WINDOW_NORMAL);
+		//cv::imshow("Salida", out);
+		cv::minMaxLoc(out, NULL, &maxVal, NULL, &maxP, mask);
 	}
-	return 0;
+	return unscalePoint(maxP, eye);
 
 
 }
@@ -187,15 +191,36 @@ cv::Mat FindEyeCenter::floodKilledges(cv::Mat &mat)
 			continue;
 		}
 		//-- agrgar las posiciones
-		cv::Point np(p.x + 1, p.y); // derecha
+		//-- derecha --
+		cv::Point np(p.x + 1, p.y); 
 		if (floodShouldpushPoint(np, mat))
 		{
 			toDo.push(np);
 		}
-
+		//-- Left  --
+		np.x = p.x - 1;
+		np.y = p.y;
+		if (floodShouldpushPoint(np, mat))
 		{
-
+			toDo.push(np);
 		}
+		//-- Down --
+		np.x = p.x;
+		np.y = p.y + 1;
+		if (floodShouldpushPoint(np, mat))
+		{
+			toDo.push(np);
+		}
+		//-- Up --
+		np.x = p.x;
+		np.y = p.y - 1;
+		if (floodShouldpushPoint(np, mat))
+		{
+			toDo.push(np);
+		}
+		//-- Terminar --
+		mat.at<float>(p) = 0.0f;
+		mask.at<uchar>(p) = 0;
 	}
 	return mask;
 }
