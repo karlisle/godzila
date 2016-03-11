@@ -20,15 +20,24 @@
 \contentsline {section}{\numberline {2.1}Ingenier\IeC {\'\i }a del software}{9}{section.2.1}
 \contentsline {section}{\numberline {2.2}Herramientas de desarrollo}{9}{section.2.2}
 \contentsline {section}{\numberline {2.3}Lenguajes de programaci\IeC {\'o}n}{9}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}C++}{9}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}OpenCV}{9}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}IntraFace}{9}{subsection.2.3.3}
 \contentsline {section}{\numberline {2.4}Metodolog\IeC {\'\i }as de desarrollo de software}{9}{section.2.4}
-\contentsline {section}{\numberline {2.5}Eye Gaze }{9}{section.2.5}
-\contentsline {chapter}{\numberline {3}DESCRIPCI\IeC {\'O}N DE ACTIVIDADES REALIZADAS}{11}{chapter.3}
-\contentsline {section}{\numberline {3.1}An\IeC {\'a}lisis}{12}{section.3.1}
-\contentsline {section}{\numberline {3.2}Dise\IeC {\~n}o}{12}{section.3.2}
-\contentsline {section}{\numberline {3.3}Desarrollo}{12}{section.3.3}
-\contentsline {section}{\numberline {3.4}Pruebas}{12}{section.3.4}
-\contentsline {section}{\numberline {3.5}Implementaci\IeC {\'o}n}{12}{section.3.5}
-\contentsline {section}{\numberline {3.6}Retroalimentaci\IeC {\'o}n}{12}{section.3.6}
-\contentsline {section}{\numberline {3.7}Resultados}{12}{section.3.7}
-\contentsline {section}{\numberline {3.8}Conclusiones y recomendaciones}{12}{section.3.8}
-\contentsline {section}{\numberline {3.9}Referencias Bibliogr\IeC {\'a}ficas \& Glosario}{12}{section.3.9}
+\contentsline {subsection}{\numberline {2.4.1}Metodolog\IeC {\'\i }a de desarrollo extremo }{9}{subsection.2.4.1}
+\contentsline {subsubsection}{El proceso de desarrollo extremo}{10}{section*.7}
+\contentsline {subsubsection}{Interacci\IeC {\'o}n con el cliente }{10}{section*.8}
+\contentsline {subsubsection}{Planificaci\IeC {\'o}n del proyecto}{11}{section*.9}
+\contentsline {subsubsection}{Dise\IeC {\~n}o, desarrollo y pruebas}{11}{section*.10}
+\contentsline {subsubsection}{Resumen de XP}{13}{section*.11}
+\contentsline {section}{\numberline {2.5}Eye Gaze }{14}{section.2.5}
+\contentsline {chapter}{\numberline {3}DESCRIPCI\IeC {\'O}N DE ACTIVIDADES REALIZADAS}{15}{chapter.3}
+\contentsline {section}{\numberline {3.1}An\IeC {\'a}lisis}{16}{section.3.1}
+\contentsline {section}{\numberline {3.2}Dise\IeC {\~n}o}{16}{section.3.2}
+\contentsline {section}{\numberline {3.3}Desarrollo}{16}{section.3.3}
+\contentsline {section}{\numberline {3.4}Pruebas}{16}{section.3.4}
+\contentsline {section}{\numberline {3.5}Implementaci\IeC {\'o}n}{16}{section.3.5}
+\contentsline {section}{\numberline {3.6}Retroalimentaci\IeC {\'o}n}{16}{section.3.6}
+\contentsline {section}{\numberline {3.7}Resultados}{16}{section.3.7}
+\contentsline {section}{\numberline {3.8}Conclusiones y recomendaciones}{16}{section.3.8}
+\contentsline {section}{\numberline {3.9}Referencias Bibliogr\IeC {\'a}ficas \& Glosario}{16}{section.3.9}
