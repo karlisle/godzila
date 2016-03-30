@@ -45,3 +45,18 @@ El dia d hoy unicmante se estudiaron las diferentes formas de procesar una image
 
 1. Se comenzo con el presesamiento con diferentes herramientas que provee OpenCV, aunque los prototipos se hicieron con python, portarlos a C++ no sera complicado.
 2. 
+
+
+####March 14, 2016 8:56 PM
+Despues de no haber actualizado esta bitacora, se retoma desde este punto, cabe señalar que no e sque se haya dejado de documentar los cambios, los mismos se puedenseguir en los mensajes de los commint del repositorio.
+
+```CLI
+cout << "Hola Mundo!" << endl;
+```
+
+
+
+
+
+
+.
