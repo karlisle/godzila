@@ -13,20 +13,18 @@
 #include <opencv2/objdetect/objdetect.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
+//-- Cabeceras locales :)!
 
-
-
-
-using namespace std;
-using namespace cv;
 
 class FindEyeCenter
 {
 public:
 	FindEyeCenter() {
 	}
-	Point eyeCenter(Mat eye, Mat face);
+	cv::Point eyeCenter(cv::Mat face, cv::Rect eye, std::string debugWindow);
+	cv::Mat floodKilledges(cv::Mat &mat);
 private:
+	
 };
 
 #endif // !FINDEYECENTER_H

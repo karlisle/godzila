@@ -77,13 +77,13 @@ void CaptureFrame::detect()
 	
 
 	VideoCapture capture;
-	capture.open("videoeyes.avi");
+	//capture.open("videoEyes.avi");
 	//capture.open("eyes_two.avi");
-	//capture.open(0);
+	capture.open(0);
 	Sleep(1000);
 	Mat fOrig;
-	Mat lEye;
-	Mat rEye;
+	Rect lEye;
+	Rect rEye;
 	Mat lEyeBW;
 	Mat rEyeBW;
 	Mat leftEyeBW;
@@ -91,10 +91,11 @@ void CaptureFrame::detect()
 	Vec3i lCircle;
 	Vec3i rCircle;
 	// Creamos unas ventanas
-	namedWindow("Gaze", CV_WINDOW_NORMAL);
-	namedWindow("LeftEye", CV_WINDOW_AUTOSIZE);
+	//namedWindow("Gaze", CV_WINDOW_NORMAL);
+	//namedWindow("LeftEye", CV_WINDOW_AUTOSIZE);
 	//namedWindow("RightEye", CV_WINDOW_AUTOSIZE);
 	int key = 0;
+	int intent = 0;
 	bool isDetect = true;
 	float score, notFace = 0.3;
 	Mat X, X0;
@@ -105,7 +106,7 @@ void CaptureFrame::detect()
 	{
 		// El siguinete delay es para dar tiempo a que el dispositivo 
 		// termine de cargar
-		//Sleep(2000);
+		Sleep(2000);
 		while (true)
 		{
 			Mat frame;
@@ -126,12 +127,14 @@ void CaptureFrame::detect()
 			{
 				// Detectamos los rostros del frame
 				face_cascade.detectMultiScale(frame, faces, 1.2, 2, 0, Size(40, 40));
+				
 				// Comprobamos si el vector de rostros esta vacio
 				// En caso de estarlo se muestra el frameactual 
 				// y se contia a la siguiente instruccion
 				if (faces.empty())
 				{
 					imshow("Gaze", frame);
+					//prepare.display(frame, faces, lEye);
 					key = waitKey(5);
 					continue;
 				}
@@ -164,6 +167,7 @@ void CaptureFrame::detect()
 			}
 			else
 			{
+				
 				// Dibujamos los marcadores faciales
 				for (int i = 0; i < faces.size(); i++)
 				{
@@ -179,57 +183,92 @@ void CaptureFrame::detect()
 				//cout << ".";
 
 				// Posicion estimada de la cabeza [mm]
+				/*
 				for (int i = 19; i <= 30; i++)
 				{
 					circle(frame, Point((int)X0.at<float>(0, i), (int)X0.at<float>(1, i)), 2, Scalar(255, 255, 0), -1);
-
-					
 				}
+				*/
+				//-- Para cuestiones de prueba se dibujan los puntos, solo para ver donde estan ubicados.
+				//circle(frame, Point((int)X0.at<float>(0, 19), (int)X0.at<float>(1, 19)), 1, Scalar(255, 255, 0), 1);
+				//circle(frame, Point((int)X0.at<float>(0, 22), (int)X0.at<float>(1, 22)), 1, Scalar(0, 255, 255), 1);
+				//circle(frame, Point((int)X0.at<float>(0, 28), (int)X0.at<float>(1, 28)), 2, Scalar(255, 255, 0), -1);
+				
+				//-- Obtenemos los puntos 19 y 22 de los ojos 
+				//-- Ell -> punto izquierdo del ojo izquierdo (19)
+				//-- Elr -> punto derecho del ojo izquierdo	(22)
+				Point Ell(X0.at<float>(0, 19), X0.at<float>(1, 19));
+				Point Elr(X0.at<float>(0, 22), X0.at<float>(1, 22));
 				
 
-				Point El(X0.at<float>(0, 28), X0.at<float>(1, 28));
-				Point Er(X0.at<float>(0, 19), X0.at<float>(1, 19));
-
+				//-- Obtenemos los puntos 19 y 22 de los ojos
+				Point Erl(X0.at<float>(0, 25), X0.at<float>(1, 25));
+				//Point Err(X0.at<float>(0, 19), X0.at<float>(1, 28));
 				// Identificar los ojos
 				// Puntos del ojo izquierdo
 				vector<Point> leftEyePoints;
-				for (int i = 19; i < 25 ; i++)
+				for (int i = 25; i <= 30 ; i++)
 				{
 					leftEyePoints.push_back(Point(X0.at<float>(0, i), X0.at<float>(1, i)));
+					//circle(frame, Point((int)X0.at<float>(0, i), (int)X0.at<float>(1, i)), 2, Scalar(255, 255, 0), -1);
 				}				
+
 				// Puntos del ojo derecho
 				vector<Point> rightEyePoints;
-				for (int i = 25; i < 31; i++)
+				for (int i = 19; i <= 24; i++)
 				{
 					rightEyePoints.push_back(Point(X0.at<float>(0, i), X0.at<float>(1, i)));
-				}			
+					//circle(frame, Point((int)X0.at<float>(0, i), (int)X0.at<float>(1, i)), 2, Scalar(255, 255, 0), -1);
+				}
+
 				Rect leftBoundRect = boundingRect(leftEyePoints);
 				Rect rightBoundRect = boundingRect(rightEyePoints);
+				/*-- Dibujamos el rectangulo que contine los iris de cada ojo
+				* El interno (azul) es el que se calcula con los valores de IntraFace
+				* el externo (verde) es el que se obtiene con las modificaciones en las 
+				* dimensiones del mismo.
+				* Pese a que el segundo presenta unas dimensiones mayores, para este 
+				* caso usaremos el primero, pues delimita mejor la zona re interes.
+				*/
+				//-- Rectangulos internos
+				//cv::rectangle(frame, leftBoundRect, cv::Scalar(255, 155, 0), 1);
+				//cv::rectangle(frame, rightBoundRect, cv::Scalar(255, 155, 0), 1);
 
-				leftBoundRect.x = leftBoundRect.x - 5;
-				leftBoundRect.y = leftBoundRect.y - 5;
+				lEye = leftBoundRect;
+				rEye = rightBoundRect;
+
+				leftBoundRect.x = leftBoundRect.x - 15;
+				leftBoundRect.y = leftBoundRect.y - 15;
 				leftBoundRect.width = leftBoundRect.width + 10;
 				leftBoundRect.height = leftBoundRect.height + 10;
 
-				rightBoundRect.x = rightBoundRect.x - 5;
-				rightBoundRect.y = rightBoundRect.y - 5;
-				rightBoundRect.width = rightBoundRect.width + 10;
-				rightBoundRect.height = rightBoundRect.height + 10;
+				rightBoundRect.x = rightBoundRect.x - 15;
+				rightBoundRect.y = rightBoundRect.y - 15;
+				rightBoundRect.width = rightBoundRect.width + 12;
+				rightBoundRect.height = rightBoundRect.height + 12;
 
 				Mat leftEye = frameOrig(leftBoundRect);
 				Mat rightEye = frameOrig(rightBoundRect);
-
-				Mat temp;
-				Mat gray;
-				Mat eqEye;
-				lEye = leftEye.clone();
-				resize(lEye, temp, Size(2 * leftEye.cols, 2 * leftEye.rows));
-				GaussianBlur(temp, eqEye, Size(9, 7), 3);
+				//-- Rectangulos externos
+				//cv::rectangle(frame, leftBoundRect, cv::Scalar(0, 155, 0), 1);
+				//cv::rectangle(frame, rightBoundRect, cv::Scalar(0, 155, 0), 1);
 				
-				// Enviamos la imagen  del ojo para procesar.
-				Point leftPupil = centro.eyeCenter(lEye, frame);
+
+				//Mat temp;
+				//Mat gray;
+				//Mat eqEye;
+				//lEye = leftEye.clone();
+				//resize(lEye, temp, Size(2 * leftEye.cols, 2 * leftEye.rows));
+				//GaussianBlur(temp, eqEye, Size(9, 7), 3);
+				/*NT:Desarrollo*/
+				//-- Enviamos la imagen  del ojo para procesar.
+				//-- Aqui puedo enviar las regiones de interes directamente, pero por ahora 
+				//-- intentare hacerlo por el otro metodo, si no funciona las envio directamente
+				//prepare.display(frame, faces, leftBoundRect);
+				//cv::equalizeHist(frame, frame);
+				prueba.display(frame, faces, lEye, rEye, Ell, Elr);
 				// Mostramos la imagen completa del rostro con los ojos punteados.
-				imshow("Gaze", frame);				
+				//imshow("Gaze", frame);				
 				
 			}
 
@@ -241,6 +280,11 @@ void CaptureFrame::detect()
 			}
 
 		}
+	}
+	else
+	{
+		cerr << "No se puede cargar el dispositivo de captura" << endl;
+		cerr << "Asegurese de que el dispositivo esta conectado, \n e intentelo nuevamente." << endl;			
 	}
 	cvDestroyAllWindows();
 	capture.release();

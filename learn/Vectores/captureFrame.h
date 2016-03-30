@@ -21,7 +21,8 @@
 #include <intraface\FaceAlignment.h>
 #include <intraface\XXDescriptor.h>
 // Cabeceras locales
-#include "findEyeCenter.h"
+//#include "prepare.h"
+#include "test.h"
 
 
 class CaptureFrame {
@@ -29,9 +30,11 @@ public:
 	CaptureFrame() {
 	}
 	
-	FindEyeCenter centro;
-
+	//Prepare prepare;
 	void detect();
+
+	Test prueba;
+	
 	
 
 private:

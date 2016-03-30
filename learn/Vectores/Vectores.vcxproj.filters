@@ -33,6 +33,15 @@
     <ClCompile Include="helpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="prepare.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="findEyeCorner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="captureFrame.h">
@@ -51,6 +60,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="prepare.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="findEyeCorner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

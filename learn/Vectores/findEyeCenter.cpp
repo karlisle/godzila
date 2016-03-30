@@ -4,24 +4,23 @@
 #include "constantes.h"
 
 using namespace std;
-using namespace cv;
 
 #pragma mark Helpers
 
-Point unscalePoint(Point p, Rect origSize) {
+cv::Point unscalePoint(cv::Point p, cv::Rect origSize) {
 	float ratio = (((float)kFastEyeWidth) / origSize.width);
 	int x = round(p.x / ratio);
 	int y = round(p.y / ratio);
-	return Point(x, y);
+	return cv::Point(x, y);
 }
 
 void scaleToFastSize(const cv::Mat &src, cv::Mat &dst) {
 	cv::resize(src, dst, cv::Size(kFastEyeWidth, (((float)kFastEyeWidth) / src.cols) * src.rows));
 }
 
-Mat computeMatXGradient(const Mat &mat)
+cv::Mat computeMatXGradient(const cv::Mat &mat)
 {
-	Mat out(mat.rows, mat.cols, CV_64F);
+	cv::Mat out(mat.rows, mat.cols, CV_64F);
 
 	for (int y = 0; y < mat.rows; ++y)
 	{
@@ -65,31 +64,32 @@ void testPossibleCentersFormula(int x, int y, const cv::Mat &weight, double gx, 
 			}
 		}
 	}
+	//cv::imshow("Out", out);
 }
 
-Point FindEyeCenter::eyeCenter(Mat lEye, Mat face) 
+cv::Point FindEyeCenter::eyeCenter(cv::Mat face, cv::Rect lEye, std::string debugWindow)
 {
 	/* TODO: Code
 	* Hacemos cosas locas con la imagen para facilitar el procesamiento
 	*/
 	//
-	cout << "Encontrar el centro del ojo" << endl;
+	//cout << "Encontrar el centro del ojo" << endl;
 
-	Mat eyeROIUnscaled = lEye.clone();
-	Mat eyeROI;
-	Mat dest;
-	Mat clEye = lEye.clone();
-
-	imshow("Ojo izquierdo", lEye);
-
-	scaleToFastSize(clEye, eyeROI);
+	cv::Mat face_gray;
+	cv::cvtColor(face, face_gray, CV_BGR2GRAY);
+	cv::Mat eyeROIUnscaled = face_gray(lEye);
+	cv::Mat eyeROI;
+	
+	scaleToFastSize(eyeROIUnscaled, eyeROI);	
+	
 	// Encontrar el gradiente
-	Mat gradientX = computeMatXGradient(eyeROI);
-	Mat gradientY = computeMatXGradient(eyeROI.t()).t();
+	cv::Mat gradientX = computeMatXGradient(eyeROI);
+	cv::Mat gradientY = computeMatXGradient(eyeROI.t()).t();
 	// Normalizar y umbralizar el gradiente
-	// Calcular rodas las magnitudes
+	// Calcular todas las magnitudes
 	Helper help;
-	Mat mags = help.matrixMagnitude(gradientX, gradientY);
+	cv::Mat mags = help.matrixMagnitude(gradientX, gradientY);
+	//cv::imshow("Mags", eyeROI);
 	// Calcular el umbral
 	double gradientThresh = help.computeDynamicThreshold(mags, kGradientThreshold);
 	for (int y = 0; y < eyeROI.rows; ++y) {
@@ -108,22 +108,48 @@ Point FindEyeCenter::eyeCenter(Mat lEye, Mat face)
 			}
 		}
 	}
-	namedWindow("Cosos", WINDOW_NORMAL);
-	imshow("Cosos" , gradientX);
+	
+	//cv::imshow(debugWindow , gradientX);
+	//cv::imshow(debugWindow, gradientY);
 
 	//-- Create a blurred and inverted image for weighting 
-	Mat weight;
-	GaussianBlur(eyeROI, weight, Size(kWeightBlurSize, kWeightBlurSize), 0, 0);
-	for (int y = 0; y < weight.rows; ++y)
+	cv::Mat weight;
+	GaussianBlur(eyeROI, weight, cv::Size(kWeightBlurSize, kWeightBlurSize), 0, 3);
+	/*
+	for (int y = 0; y < eyeROI.rows; ++y)
 	{
 		unsigned char *row = weight.ptr<unsigned char>(y);
-		for (int x = 0; x < weight.cols; ++x)
+		for (int x = 0; x < eyeROI.cols; ++x)
 		{
-			row[x] = (255 - row[x]);
+			row[x] = (row[x] - 255);
 		}
 	}
+	*/
+	cv::Mat hist, image;
+	int histSize = 256;
+	float range[] = { 0, 255 };
+	const float *ranges[] = { range };
+	//-- Cacular el histograma
+	cv::calcHist(&face_gray, 1, 0, cv::Mat(), hist, 1, &histSize, ranges, true, false );
+	//-- Ver el histograma obtenido en la ventana de comandos
+	double total;
+	total = face_gray.rows * face_gray.cols;
+	
+	int hist_w = 512;
+	int hist_h = 400;
+	int bin_w = cvRound((double) hist_w/histSize);
+	cv::Mat histImage(hist_h, hist_w, CV_8UC1, cv::Scalar(0, 0, 0));
+	cv::normalize(hist, hist, 0, histImage.rows, cv::NORM_MINMAX, -1, cv::Mat());
+	for (int i = 1; i < histSize; i++)
+	{
+		cv::line(histImage, cv::Point(bin_w *(i-1), hist_h - cvRound(hist.at<float>(i-1)) ), 
+							cv::Point(bin_w*(i), hist_h -cvRound(hist.at<float>(i)) ), 
+							cv::Scalar(255, 0, 0), 2, 6, 0);
+	}
+	
 
-	Mat  outSum = Mat::zeros(eyeROI.rows, eyeROI.cols, CV_64F);
+	cv::Mat  outSum = cv::Mat::zeros(eyeROI.rows, eyeROI.cols, CV_64F);
+	
 	printf("Eye Size: %ix%i\n", outSum.cols, outSum.rows);
 	for (int y = 0; y < weight.rows; ++y)
 	{
@@ -138,11 +164,86 @@ Point FindEyeCenter::eyeCenter(Mat lEye, Mat face)
 			testPossibleCentersFormula(x, y, weight, gX, gY, outSum);
 		}
 	}
-	return 0;
+
+	//--
+	double numGradients = (weight.rows * weight.cols);
+	cv::Mat out;
+	outSum.convertTo(out, CV_32F, 1.0/numGradients);
+	//-- Encontrar el punto maximo
+	cv::Point maxP;
+	double maxVal;
+	cv::minMaxLoc(out, NULL, &maxVal, NULL, &maxP);
+
+	//-- Rellenar los bordes
+	if (kEnablePostProcess)
+	{
+		cv::Mat floodClone;
+		double floodThresh = maxVal * kPostProcessThreshold;
+		cv::threshold(out, floodClone, floodThresh, 0.0f, cv::THRESH_TOZERO);
+		//cv::namedWindow("floodClone", CV_WINDOW_NORMAL);
+		//cv::imshow("floodClone", floodClone);
+		if (kPlotVectorField)
+		{
+			cv::imwrite("eyeFrame.bmp", eyeROIUnscaled);
+		}
+		cv::Mat mask = floodKilledges(floodClone);
+	}
+
+	//-- Creamos una ventana
+	cv::namedWindow(debugWindow, CV_WINDOW_NORMAL);
+	// dibujar la region del ojo
+	cv::rectangle(face, lEye, 1234);
+	//cv::imshow("Face Original", face);
+
+	cv::Point mp = unscalePoint(maxP, lEye);
+	cv::rectangle(eyeROI, mp, cv::Point(mp.x + 2, mp.y - 2), cv::Scalar(255, 0, 0), 2, 0);
+
+	cv::imshow(debugWindow, eyeROI);
+	cv::imshow("Face Original", face);
+	
+	return unscalePoint(maxP, lEye);
 
 
 }
 #pragma mark Postprocessing
+
+
+
+
+
+bool floodShouldpushPoint(const cv::Point &np, const cv::Mat &mat)
+{
+	Helper help;
+	return  help.inMat(np, mat.rows, mat.cols);
+}
+cv::Mat FindEyeCenter::floodKilledges(cv::Mat &mat)
+{
+	rectangle(mat, cv::Rect(0, 0, mat.cols, mat.rows), 255);
+	cv::Mat mask(mat.rows, mat.cols, CV_8U, 255);
+	queue<cv::Point> toDo;
+	toDo.push(cv::Point(0, 0));
+	while (!toDo.empty())
+	{
+		cv::Point p = toDo.front();
+		toDo.pop();
+		if (mat.at<float>(p) == 0.0f)
+		{
+			continue;
+		}
+		//-- agrgar las posiciones
+		cv::Point np(p.x + 1, p.y); // derecha
+		if (floodShouldpushPoint(np, mat))
+		{
+			toDo.push(np);
+		}
+
+		{
+
+		}
+	}
+	return mask;
+}
+
 
 
 

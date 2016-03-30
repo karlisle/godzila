@@ -1,4 +1,5 @@
 #include "captureFrame.h"
+#include "test.h"
 
 using namespace std;
 
@@ -9,6 +10,9 @@ int main(int argc, char** argv)
 
 	CaptureFrame begin;
 	begin.detect();
+
+	//Test cosos;
+	//cosos.display();
 
 	//Detener la ejecucion
 	cin.get();
