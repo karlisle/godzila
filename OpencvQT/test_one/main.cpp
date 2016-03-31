@@ -6,9 +6,11 @@
 #include <iostream>
 
 // Include relacionados a opencv
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv/cv.h>
+#include "opencv2/opencv.hpp"
+#include "opencv2/core/core.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/imgcodecs/imgcodecs.hpp"
 
 // Para ahorrar tiempo y agrgar claridad, aunque un tanto abstracto,
 // agregamos los espacios de nombes d eC++ y OpenCV
@@ -24,23 +26,12 @@ int main(int argc, char *argv[])
 
     Mat imagen;
 
-    imagen = imread("saitama.jpg", CV_LOAD_IMAGE_COLOR);
+    imagen = imread("saitama.jpg", IMREAD_COLOR);
 
-    namedWindow("Saitama", 1);
+    namedWindow("Quetzal", WINDOW_AUTOSIZE);
 
-    if(!imagen.empty())
-    {
-        imshow("Saitama", imagen);
-        waitKey(1000);
-    }
-    else
-    {
-        w.show();
-    }
-
-    VideoCapture cap(0);
-
-
-
+    imshow("Quetzal", imagen);
+    waitKey(0);
+    cin.get();
     return a.exec();
 }

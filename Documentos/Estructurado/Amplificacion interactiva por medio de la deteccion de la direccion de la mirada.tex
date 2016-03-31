@@ -39,6 +39,7 @@
 \usepackage[spanish]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
+\usepackage{multicol}
 
 % Configurar los encabezados, pies de pagina y paginas de capitulo
 % Encabezados
@@ -307,23 +308,17 @@ $\ $
 		
 		\subsubsection{Valores}
 			Hemos identificado un conjunto de valores que nos representan y que permiten cumplir nuestra misión y lograr
-			la visión forjada:
-			
-			\begin{itemize}
-				\item Calidad
-				\item Integridad
-				\item Compromiso
-				\item Asertividad
-				\item Trabajo en equipo
-				\item Aprendizaje continuo
-			\end{itemize}
-	
-			• Calidad
-			• Integridad
-			• Compromiso
-			• Asertividad
-			• Trabajo en equipo
-			• Aprendizaje continuo
+			la visión forjada:\\
+			\begin{multicols}{2}
+				\begin{itemize}
+					\item Calidad
+					\item Integridad
+					\item Compromiso
+					\item Asertividad
+					\item Trabajo en equipo
+					\item Aprendizaje continuo
+				\end{itemize}
+			\end{multicols}
 		
 		\subsubsection{Objetivo}
 			Servir de enlace entre la comunidad científica y los sectores productivos de bienes y servicios, atenderlos
@@ -355,10 +350,142 @@ $\ $
 \section{Ingeniería del software}
 
 \section{Herramientas de desarrollo}
-
+	
 \section{Lenguajes de programación}
+		\subsection{C++}
+		\subsection{OpenCV}
+		\subsection{IntraFace}
 
 \section{Metodologías de desarrollo de software}
+	\subsection{Metodología de desarrollo extremo \label{XP}}
+		La programación extrema se basa en una serie de reglas y principios que se han ido gestando a lo largo de toda la historia de la 
+		ingeniería del software. Usadas conjuntamente proporcionan una nueva metodología de desarrollo software que se puede englobar 
+		dentro de las metodologías ligeras, que son aquéllas en la que se da prioridad a las tareas que dan resultados directos y que 
+		reducen la burocracia que hay alrededor tanto como sea posible (pero no más).
+		
+		La programación extrema, dentro de las metodologías ágiles, se puede clasificar dentro de las evolutivas.
+		
+		Una de las características de \textsl{eXtreme Programming} es que muchos de, si no todos, sus ingredientes son de sobra conocidos
+		dentro de la rama de la ingeniería del software desde hace tiempo, incluso desde sus comienzos. Los autores de han seleccionado 
+		los que han considerados como los mejores y han profundizado en sus relaciones y en cómo se refuerzan unos a otros. El resultado 
+		ha sido una metodología única y compacta. Por eso, a\'unque se pueda alegar que la programación extrema no se base en principios
+		nada nuevos, se ha de aclarar que, en conjunto, es una nueva forma de ver el desarrollo de software. 
+		
+		\subsubsection{El proceso de desarrollo extremo}
+			La programación extrema parte del caso habitual de una compañía que desarrolla software, generalmente software a medida, en la
+			que hay diferentes roles: un equipo de gestión, un equipo de desarrolladores y los clientes. 
+			La relación con el cliente es totalmente diferente a lo que se ha venido haciendo en las metodologías tradicionales que se basan
+			fundamentalmente en una fase de captura de requisitos previa al desarrollo y una fase de validación posterior al mismo.
+			 
+		\subsubsection{Interacción con el cliente }
+			En la programación extrema al cliente no sólo se le pide que apoye al equipo de desarrollo, en realidad podríamos decir que es 
+			parte de él. Su importancia es capital a la hora de abordar las historias de los usuarios y las reuniones de planificación, como 
+			veremos más adelante. Además, será tarea suya retroalimentar al equipo de desarrolladores después de cada iteración con los 
+			problemas con los que se ha encontrado, mostrando sus prioridades, expresando sus sensaciones, etc.,
+			
+			Existirán métodos como pruebas de aceptación que ayudarán a que la labor del cliente sea lo más fructífera posible.
+			
+			En resumen, el cliente se encuentra mucho más cercano al proceso de desarrollo. Se elimina la fase inicial de captura de requisitos 
+			y se permite que éstos se vayan definiendo de una forma ordenada durante el tiempo que dura el proyecto. El cliente puede cambiar 
+			de opinión sobre la marcha y a cambio debe encontrarse siempre disponible para resolver dudas del equipo de desarrollo y para detallar 
+			los requisitos especificados cuando sea necesario. 
+			
+			El proceso de captura de requisitos de XP gira entorno a una lista de características que el cliente desea que existan en el sistema 
+			final. Cada una de estas características recibe el nombre de historias de usuarios y su definición consta de dos fases:
+			
+			\begin{description}
+				\item[En la primera fase] el cliente describe con sus propias palabras las características y el responsable del equipo de 
+					desarrollo le informa de la dificultad técnica de cada una de ellas y por lo tanto de su coste.
+				\item[La segunda fase] consiste en coger las primeras historias que serán implementadas (primera iteración) y dividirlas 
+					en las tareas necesarias para llevarlas a cabo.
+			\end{description}
+			
+			Este proceso es una de las principales diferencias con las metodologías tradicionales. a\'unque las historias de usuarios guardan 
+			cierta relación con otras técnicas como los casos de uso de UML, su proceso de creación es muy diferente. En lo que al cliente se 
+			refiere no se le exige que especifique exactamente lo que quiere al principio con un documento de requisitos de usuario. La parte 
+			que se mantiene con este documento es que es el cliente el que tiene que escribir lo que quiere, no se permite que alguien del 
+			equipo de desarrolladores lo escriba por él.
+			
+		\subsubsection{Planificación del proyecto}
+			 La planificación debe de seguir unas ciertas premisas. La primordial es que las entregas se hagan cuanto antes y que con cada 
+			 iteración el cliente reciba una nueva versión. Cuanto más tiempo se tarde en introducir una parte esencial, menos tiempo habrá
+			 para trabajar en ella posteriormente. Se aconsejan muchas entregas y muy frecuentes. De esta forma, un error en una parte esencial 
+			 del sistema se encontrará pronto y, por tanto, se podrá arreglar antes.\\
+			 
+			 Sin embargo, los requisitos anteriores en cuanto a la planificación no deben suponer horas extra para el equipo de desarrollo.\\
+			 
+			 Pero lo mejor de todo es que a la hora de planificar uno se puede equivocar. Es más, todos sabemos que lo común es equivocarse 
+			 y por ello la metodología ya tiene previsto mecanismos de revisión. Por tanto, es normal que cada 3 a 5 iteraciones se tengan 
+			 que revisar las historias de los usuarios y renegociar nuevamente la planificación.\\
+			 
+		\subsubsection{Diseño, desarrollo y pruebas}
+			El desarrollo es la pieza clave de todo el proceso de programación extrema. Todas las tareas tienen como objetivo que se desarrollo 
+			a la máxima velocidad, sin interrupciones y siempre en la dirección correcta. 
+			
+			También se otorga una gran importancia al diseño y establece que éste debe ser revisado y mejorado de forma continua según se van 
+			añadiendo funcionalidades al sistema.
+			
+			La clave del proceso de desarrollo de XP es la comunicación. La gran mayoría de los problemas en los proyectos de desarrollo son 
+			provocados por falta de comunicación en el equipo, así que se pone un gran énfasis en facilitar que la información fluya lo más 
+			eficientemente posible. 
+			
+			Como ya hemos visto con anterioridad, uno de los principios de la programación extrema es la simplicidad. El diseño debe ser lo 
+			más simple posible, pero no más simple. El paradigma KISS ("Keep It Small and Simple" para unos o "Keep it Simple, Stupid" para otros) 
+			se lleva hasta las últimas consecuencias. Por ejemplo, se hace énfasis en no añadir funcionalidad nunca antes de lo necesario, por las 
+			sencillas razones de que probablemente ahora mismo no sea lo más prioritario o porque quizás nunca llegue a ser necesaria.
+			
+			
+			Supongamos que ya hemos planificado y dividido en tareas, como se ha comentado en los párrafos anteriores. Lo lógico sería empezar 
+			ya a codificar. Pues no. Nos encontramos con otro de los puntos clave de la programación extrema (y que sí es innovador en ella): 
+			las pruebas unitarias se implementan a la vez hay que el código de producción. De hecho cada vez que se va a implementar una pequeña
+			parte se escribe una prueba sencilla y luego el código suficiente para que la pase. Cuando la haya pasado se repite el proceso con 
+			la siguiente parte.
+			
+			Esta forma de usar las pruebas unitarias ayuda a priorizar y comprobar la evolución del desarrollo y que ofrecen retroalimentación 
+			inmediata.
+			
+			Ya no son imprescindibles dos equipos diferenciados que desarrollan y prueban cada uno por su cuenta. Ahora el ciclo se basa en 
+			implementar una prueba unitaria, codificar la solución y pasar la prueba, con lo que se consigue un código simple y funcional de manera
+			bastante rápida. Por eso es importante que las pruebas se pasen siempre al 100%. 
+			 
+			Las pruebas unitarias no se han de confundir con las pruebas de aceptación que han sido mencionadas con anterioridad. Éstas últimas son
+			pruebas realizadas por el cliente o por el usuario final para constatar que el sistema hace realmente lo que él quiere.
+			
+			La programación extrema viene a perseguir lo que se ha venido a llamar integración continua. De esta forma, haciéndolo cada vez con 
+			pequeños fragmentos de código, se evita la gran integración final. 
+			
+			En todo desarrollo de programación extrema debería existir, por tanto, una versión siempre integrada. La sincronización por parte de los
+			desarrolladores con el repositorio central debe darse como mínimo una vez al día, de manera que los cambios siempre se realicen sobre 
+			la última versión. De esta forma nos podemos asegurar de que las modificaciones que hacemos no se estén haciendo sobre una versión 
+			obsoleta\\
+			
+			El proceso de desarrollo no lo va a hacer un desarrollador en solitario, sino siempre con otra persona, algo que se ha venido a llamar
+			programación por parejas. Una pareja de desarrolladores debe compartir ordenador, teclado y ratón. El principal objetivo es realizar de 
+			forma continua y sin parar el desarrollo una revisión de diseño y de código. Las parejas deben ir rotando de forma periódica para hacer 
+			que el conocimiento del sistema se vaya difundiendo por el equipo (facilitándose que el código sea de todos), a la vez que se fomentan 
+			el entrenamiento cruzado.
+			
+		\subsubsection{Resumen de XP}
+			Todos los punto anteriormente detallados, bien los podemos definir y resumir en la siguiente lista, obviamente cada uno de ellos
+			lleva consigo un gran significado de fondo, pero en general  y conociendo la metodología se puede uno basar en la siguiente lista 
+			para cerciorarse de que se están cumpliendo los puntos que la metodología estipula que se deben llevar a cabo.
+			
+			\begin{enumerate}
+				\item El juego de la planificación (the planning game).
+				\item Pequeñas entregas (small releases).
+				\item Metáfora (metaphor).
+				\item Diseño simple (simple design).
+				\item Pruebas (testing).
+				\item Refactorización (refactoring).
+				\item Programación por parejas (pair programming).
+				\item Propiedad colectiva (collective ownership).
+				\item Integración continua (continous integration).
+				\item 40 horas semanales (40-hour week).
+				\item Cliente en casa (on-site costumer).
+				\item Estándares de codificación (coding standards).
+			\end{enumerate}
+			
+			Se puede considerar como el resumen de bolsillo de la metodología de desarrollo extremo, y llevarla a cada lugar en el que se este desarrollando.\\
 
 \section{Eye Gaze }
 

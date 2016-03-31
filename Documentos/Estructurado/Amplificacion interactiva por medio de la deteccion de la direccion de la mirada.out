@@ -19,15 +19,24 @@
 \BOOKMARK [1][-]{section.2.1}{Ingenier\355a del software}{chapter.2}% 19
 \BOOKMARK [1][-]{section.2.2}{Herramientas de desarrollo}{chapter.2}% 20
 \BOOKMARK [1][-]{section.2.3}{Lenguajes de programaci\363n}{chapter.2}% 21
-\BOOKMARK [1][-]{section.2.4}{Metodolog\355as de desarrollo de software}{chapter.2}% 22
-\BOOKMARK [1][-]{section.2.5}{Eye Gaze }{chapter.2}% 23
-\BOOKMARK [0][-]{chapter.3}{DESCRIPCI\323N DE ACTIVIDADES REALIZADAS}{}% 24
-\BOOKMARK [1][-]{section.3.1}{An\341lisis}{chapter.3}% 25
-\BOOKMARK [1][-]{section.3.2}{Dise\361o}{chapter.3}% 26
-\BOOKMARK [1][-]{section.3.3}{Desarrollo}{chapter.3}% 27
-\BOOKMARK [1][-]{section.3.4}{Pruebas}{chapter.3}% 28
-\BOOKMARK [1][-]{section.3.5}{Implementaci\363n}{chapter.3}% 29
-\BOOKMARK [1][-]{section.3.6}{Retroalimentaci\363n}{chapter.3}% 30
-\BOOKMARK [1][-]{section.3.7}{Resultados}{chapter.3}% 31
-\BOOKMARK [1][-]{section.3.8}{Conclusiones y recomendaciones}{chapter.3}% 32
-\BOOKMARK [1][-]{section.3.9}{Referencias Bibliogr\341ficas \046 Glosario}{chapter.3}% 33
+\BOOKMARK [2][-]{subsection.2.3.1}{C++}{section.2.3}% 22
+\BOOKMARK [2][-]{subsection.2.3.2}{OpenCV}{section.2.3}% 23
+\BOOKMARK [2][-]{subsection.2.3.3}{IntraFace}{section.2.3}% 24
+\BOOKMARK [1][-]{section.2.4}{Metodolog\355as de desarrollo de software}{chapter.2}% 25
+\BOOKMARK [2][-]{subsection.2.4.1}{Metodolog\355a de desarrollo extremo }{section.2.4}% 26
+\BOOKMARK [3][-]{section*.7}{El proceso de desarrollo extremo}{subsection.2.4.1}% 27
+\BOOKMARK [3][-]{section*.8}{Interacci\363n con el cliente }{subsection.2.4.1}% 28
+\BOOKMARK [3][-]{section*.9}{Planificaci\363n del proyecto}{subsection.2.4.1}% 29
+\BOOKMARK [3][-]{section*.10}{Dise\361o, desarrollo y pruebas}{subsection.2.4.1}% 30
+\BOOKMARK [3][-]{section*.11}{Resumen de XP}{subsection.2.4.1}% 31
+\BOOKMARK [1][-]{section.2.5}{Eye Gaze }{chapter.2}% 32
+\BOOKMARK [0][-]{chapter.3}{DESCRIPCI\323N DE ACTIVIDADES REALIZADAS}{}% 33
+\BOOKMARK [1][-]{section.3.1}{An\341lisis}{chapter.3}% 34
+\BOOKMARK [1][-]{section.3.2}{Dise\361o}{chapter.3}% 35
+\BOOKMARK [1][-]{section.3.3}{Desarrollo}{chapter.3}% 36
+\BOOKMARK [1][-]{section.3.4}{Pruebas}{chapter.3}% 37
+\BOOKMARK [1][-]{section.3.5}{Implementaci\363n}{chapter.3}% 38
+\BOOKMARK [1][-]{section.3.6}{Retroalimentaci\363n}{chapter.3}% 39
+\BOOKMARK [1][-]{section.3.7}{Resultados}{chapter.3}% 40
+\BOOKMARK [1][-]{section.3.8}{Conclusiones y recomendaciones}{chapter.3}% 41
+\BOOKMARK [1][-]{section.3.9}{Referencias Bibliogr\341ficas \046 Glosario}{chapter.3}% 42
