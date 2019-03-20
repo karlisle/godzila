@@ -1,0 +1,43 @@
+\BOOKMARK [1][-]{section.1}{Objetivos}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Objetivos espec\355ficos}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Marco te\363rico}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Metodolog\355a de desarrollo extremo }{section.2}% 4
+\BOOKMARK [3][-]{subsubsection.2.1.1}{El proceso de desarrollo extremo}{subsection.2.1}% 5
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Interacci\363n con el cliente }{subsection.2.1}% 6
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Planificaci\363n del proyecto}{subsection.2.1}% 7
+\BOOKMARK [3][-]{subsubsection.2.1.4}{Dise\361o, desarrollo y pruebas}{subsection.2.1}% 8
+\BOOKMARK [3][-]{subsubsection.2.1.5}{Resumen de XP}{subsection.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.2}{Python }{section.2}% 10
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Caracter\355sticas y paradigmas}{subsection.2.2}% 11
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Filosof\355a}{subsection.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.3}{PyQt }{section.2}% 13
+\BOOKMARK [1][-]{section.3}{Desarrollo}{}% 14
+\BOOKMARK [2][-]{subsection.3.1}{An\341lisis de requerimientos de usuario}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.2}{Requerimientos funcionales}{section.3}% 16
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Interfaz de usuario }{subsection.3.2}% 17
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Interfaces de adminsitraci\363n }{subsection.3.2}% 18
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Validar }{subsection.3.2}% 19
+\BOOKMARK [3][-]{subsubsection.3.2.4}{Obtener datos relacionados }{subsection.3.2}% 20
+\BOOKMARK [3][-]{subsubsection.3.2.5}{Numero de m\341quina }{subsection.3.2}% 21
+\BOOKMARK [3][-]{subsubsection.3.2.6}{Preparar registro }{subsection.3.2}% 22
+\BOOKMARK [3][-]{subsubsection.3.2.7}{Restablecer el formulario}{subsection.3.2}% 23
+\BOOKMARK [3][-]{subsubsection.3.2.8}{Ampliaciones a futuro}{subsection.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.3}{Requerimientos no Funcionales}{section.3}% 25
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Disponibilidad}{subsection.3.3}% 26
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Accesibilidad}{subsection.3.3}% 27
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Rendimiento}{subsection.3.3}% 28
+\BOOKMARK [3][-]{subsubsection.3.3.4}{Escalabilidad, mantenibilidad y portabilidad}{subsection.3.3}% 29
+\BOOKMARK [2][-]{subsection.3.4}{Dise\361o }{section.3}% 30
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Dise\361o del n\372cleo de la aplicaci\363n}{subsection.3.4}% 31
+\BOOKMARK [3][-]{subsubsection.3.4.2}{GUI}{subsection.3.4}% 32
+\BOOKMARK [3][-]{subsubsection.3.4.3}{Base de datos}{subsection.3.4}% 33
+\BOOKMARK [2][-]{subsection.3.5}{Implementaci\363n}{section.3}% 34
+\BOOKMARK [3][-]{subsubsection.3.5.1}{Base de datos}{subsection.3.5}% 35
+\BOOKMARK [3][-]{subsubsection.3.5.2}{Modulos}{subsection.3.5}% 36
+\BOOKMARK [3][-]{subsubsection.3.5.3}{Problemas por resolver}{subsection.3.5}% 37
+\BOOKMARK [2][-]{subsection.3.6}{Pruebas}{section.3}% 38
+\BOOKMARK [3][-]{subsubsection.3.6.1}{Resultados de las pruebas}{subsection.3.6}% 39
+\BOOKMARK [3][-]{subsubsection.3.6.2}{Mejoras realizadas despu\351s de las pruebas.}{subsection.3.6}% 40
+\BOOKMARK [3][-]{subsubsection.3.6.3}{Detalles pendientes por arreglar}{subsection.3.6}% 41
+\BOOKMARK [2][-]{subsection.3.7}{Resultados obtenidos}{section.3}% 42
+\BOOKMARK [2][-]{subsection.3.8}{Conclusi\363n}{section.3}% 43

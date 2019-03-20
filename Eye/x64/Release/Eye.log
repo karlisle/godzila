@@ -1,0 +1,42 @@
+﻿  main.cpp
+C:\Users\kharl\Documents\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(80): warning C4251: 'INTRAFACE::FaceAlignment::m_DR': class 'std::vector<cv::Mat,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=cv::Mat
+          ]
+C:\Users\kharl\Documents\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(80): warning C4251: 'INTRAFACE::FaceAlignment::m_Db': class 'std::vector<cv::Mat,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=cv::Mat
+          ]
+C:\Users\kharl\Documents\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(80): warning C4251: 'INTRAFACE::FaceAlignment::m_TR': class 'std::vector<cv::Mat,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=cv::Mat
+          ]
+C:\Users\kharl\Documents\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(80): warning C4251: 'INTRAFACE::FaceAlignment::m_Tb': class 'std::vector<cv::Mat,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=cv::Mat
+          ]
+C:\Users\kharl\Documents\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(81): warning C4251: 'INTRAFACE::FaceAlignment::m_winsize': class 'std::vector<int,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\kharl\Documents\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(82): warning C4251: 'INTRAFACE::FaceAlignment::m_flags': class 'std::vector<bool,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+          with
+          [
+              _Ty=bool
+          ]
+C:\Users\kharl\Documents\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(83): warning C4251: 'INTRAFACE::FaceAlignment::m_w': class 'cv::Mat' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+  C:\opencv\build\include\opencv2/core/mat.hpp(731): note: see declaration of 'cv::Mat'
+C:\Users\kharl\Documents\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(84): warning C4251: 'INTRAFACE::FaceAlignment::m_meanShape2D': class 'cv::Mat' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+  C:\opencv\build\include\opencv2/core/mat.hpp(731): note: see declaration of 'cv::Mat'
+C:\Users\kharl\Documents\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(86): warning C4251: 'INTRAFACE::FaceAlignment::m_cropROI': class 'cv::Rect_<int>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+C:\Users\kharl\Documents\Eye\Libraries\Intraface\include\intraface\FaceAlignment.h(87): warning C4251: 'INTRAFACE::FaceAlignment::m_offset': class 'cv::Rect_<double>' needs to have dll-interface to be used by clients of class 'INTRAFACE::FaceAlignment'
+  Generating code
+  All 88 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Eye.vcxproj -> C:\Users\kharl\Documents\Eye\x64\Release\Eye.exe
+  Eye.vcxproj -> C:\Users\kharl\Documents\Eye\x64\Release\Eye.pdb (Full PDB)

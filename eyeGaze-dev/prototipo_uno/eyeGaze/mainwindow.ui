@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>569</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Eye Gaze Estimation Demo</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>2</y>
+      <width>250</width>
+      <height>400</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Modo Camara</string>
+    </property>
+    <widget class="QCommandLinkButton" name="recordCameraLinkButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>116</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Registrar iris </string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="previewCameraLinkButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>32</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Previsualizar </string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="trainCameraLinkButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>158</y>
+       <width>221</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Entrenar estimador de mirada</string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="detectCameraLinkButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>74</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Detectar iris </string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="gazeCameraLinkButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Predecir mirada</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>2</y>
+      <width>250</width>
+      <height>400</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Desde archivo</string>
+    </property>
+    <widget class="QCommandLinkButton" name="previewFileLinkButton">
+     <property name="geometry">
+      <rect>
+       <x>1</x>
+       <y>31</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Previsualizar</string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="detectFileLinkButton">
+     <property name="geometry">
+      <rect>
+       <x>1</x>
+       <y>73</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Detectar iris</string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="recordFileLinkButton">
+     <property name="geometry">
+      <rect>
+       <x>1</x>
+       <y>115</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Guardar registro de iris</string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="trainFileLinkButton">
+     <property name="geometry">
+      <rect>
+       <x>1</x>
+       <y>157</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Entrenar estimador de mirada</string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="gazeFileLinkButton">
+     <property name="geometry">
+      <rect>
+       <x>1</x>
+       <y>199</y>
+       <width>200</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Estimador de mirada</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>240</y>
+       <width>240</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/cv_lab.jpg);
+ background-repeat: no-repeat;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>265</x>
+      <y>2</y>
+      <width>3</width>
+      <height>400</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>569</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionSettings"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionCredits"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionCredits">
+   <property name="text">
+    <string>Credits</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

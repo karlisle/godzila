@@ -1,0 +1,15 @@
+﻿  eyegaze.cpp
+c:\users\kharl\documents\git\godzila\eye\eyegaze.cpp(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\kharl\documents\git\godzila\eye\eyegaze.cpp(83): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\eyegaze.cpp(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\eyegaze.cpp(89): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\eyegaze.cpp(91): warning C4018: '<': signed/unsigned mismatch
+c:\users\kharl\documents\git\godzila\eye\eyegaze.cpp(109): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\eyegaze.cpp(110): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\eyegaze.cpp(125): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\eyegaze.cpp(125): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\eyegaze.cpp(126): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\eyegaze.cpp(126): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\kharl\documents\git\godzila\eye\eyegaze.cpp(99): warning C4715: 'EyeGaze::computeIrisCenter': not all control paths return a value
+  Eye.vcxproj -> C:\Users\kharl\Documents\Git\godzila\Eye\Debug\Eye.exe
+  Eye.vcxproj -> C:\Users\kharl\Documents\Git\godzila\Eye\Debug\Eye.pdb (Partial PDB)
